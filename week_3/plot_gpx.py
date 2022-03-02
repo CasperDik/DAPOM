@@ -2,10 +2,13 @@ import matplotlib.pyplot as plt
 import smopy
 import pandas as pd
 
-def plot_gpx(points):
+def plot_gpx(points, speed):
     lats = pd.Series([p[0] for p in points], name="lats")
     longs = pd.Series([p[1] for p in points], name="longs")
-    speed = pd.Series([p[2] for p in points], name="speed")
+
+    # to get similar lengths for speed
+    lats = lats[1:-1]
+    longs = longs[1:-1]
 
     # setup map
     map = smopy.Map((min(lats), min(longs), max(lats), max(longs)), z=12)

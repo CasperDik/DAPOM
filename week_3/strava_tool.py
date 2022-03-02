@@ -37,7 +37,7 @@ def total_distance(points):
 
     return total_distance
 
-def speed(points):
+def speed_kmh(points):
     # calculate speed in km/h
     # speed = distance traveled / time elapsed
     speed = []
@@ -61,6 +61,6 @@ def min_max_speed(list_speed):
 
 if __name__ == "__main__":
     points = load_data("Ochtendrit.gpx")
-    speed = speed(points)
+    speed = speed_kmh(points)
 
     print(average_speed(speed))

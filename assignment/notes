@@ -1,0 +1,22 @@
+check recordings lecture 4 for code
+
+multiple files run with main(.py)
+
+w = weight/willingness --> to far won't go
+
+gc.collect to free memory(don't use too often, slow?)
+
+use folium
+
+sensitivity analysis for assumptions
+
+use mainly elasticsearch
+
+
+use:
+    tic = time.time()
+
+    # Time and print the elapsed time
+    toc = time.time()
+    elapsed_time = toc - tic
+    print('Total running time of GBM: {:.2f} seconds'.format(elapsed_time))
