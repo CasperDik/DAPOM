@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_566322dc8d5a42ae8782e25298f88f40 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_566322dc8d5a42ae8782e25298f88f40" ></div>
+        
+</body>
+<script>    
+    
+            var map_566322dc8d5a42ae8782e25298f88f40 = L.map(
+                "map_566322dc8d5a42ae8782e25298f88f40",
+                {
+                    center: [40.719093322753906, -73.843017578125],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_566322dc8d5a42ae8782e25298f88f40);
+
+            
+
+        
+    
+            var tile_layer_ce3911185eb74eff8ddf8832b4a24bc3 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var marker_38da5d63859d4c538190aceaff82efce = L.marker(
+                [40.71955108642578, -73.84307098388672],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_9816186e475641c5a252f8c3978ee88c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3b00c4ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_38da5d63859d4c538190aceaff82efce.setIcon(icon_9816186e475641c5a252f8c3978ee88c);
+        
+    
+        var popup_6a6df98bead64ff9873b40463a76a733 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dfdff98870be4b78907be770ad97b11d = $(`<div id="html_dfdff98870be4b78907be770ad97b11d" style="width: 100.0%; height: 100.0%;">taxi ride costed 15.30 dollars</div>`)[0];
+            popup_6a6df98bead64ff9873b40463a76a733.setContent(html_dfdff98870be4b78907be770ad97b11d);
+        
+
+        marker_38da5d63859d4c538190aceaff82efce.bindPopup(popup_6a6df98bead64ff9873b40463a76a733)
+        ;
+
+        
+    
+    
+            marker_38da5d63859d4c538190aceaff82efce.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_02816ab4124b4a418f596d05fca41b24 = L.marker(
+                [40.71954345703125, -73.84274291992188],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_fdef0faf37274ae1a422acc78e99e7e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#a1005eff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_02816ab4124b4a418f596d05fca41b24.setIcon(icon_fdef0faf37274ae1a422acc78e99e7e3);
+        
+    
+        var popup_ede642c4cdcf46f8b5b849ff318853c5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5924ed2f39d649d1b25fddfe61d2f3cd = $(`<div id="html_5924ed2f39d649d1b25fddfe61d2f3cd" style="width: 100.0%; height: 100.0%;">taxi ride costed 34.80 dollars</div>`)[0];
+            popup_ede642c4cdcf46f8b5b849ff318853c5.setContent(html_5924ed2f39d649d1b25fddfe61d2f3cd);
+        
+
+        marker_02816ab4124b4a418f596d05fca41b24.bindPopup(popup_ede642c4cdcf46f8b5b849ff318853c5)
+        ;
+
+        
+    
+    
+            marker_02816ab4124b4a418f596d05fca41b24.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3008d844141c406eb68c155bcfd34db9 = L.marker(
+                [40.71967697143555, -73.84355163574219],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_8574793c13da42519eb3f2c016c04f3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#7a0085ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_3008d844141c406eb68c155bcfd34db9.setIcon(icon_8574793c13da42519eb3f2c016c04f3e);
+        
+    
+        var popup_26a5a1fbd9164639ab998d51925d51bd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9cc9832e87e844f89bf2a78372961a4e = $(`<div id="html_9cc9832e87e844f89bf2a78372961a4e" style="width: 100.0%; height: 100.0%;">taxi ride costed 27.30 dollars</div>`)[0];
+            popup_26a5a1fbd9164639ab998d51925d51bd.setContent(html_9cc9832e87e844f89bf2a78372961a4e);
+        
+
+        marker_3008d844141c406eb68c155bcfd34db9.bindPopup(popup_26a5a1fbd9164639ab998d51925d51bd)
+        ;
+
+        
+    
+    
+            marker_3008d844141c406eb68c155bcfd34db9.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_210264df1bfd493a9051f1480276c386 = L.marker(
+                [40.71909713745117, -73.84197998046875],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_c33b94fc9e1b4e08af018651f16cab77 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#6d0092ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_210264df1bfd493a9051f1480276c386.setIcon(icon_c33b94fc9e1b4e08af018651f16cab77);
+        
+    
+        var popup_9f300cfa08cb4ce89a11273e2d90b16b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a8c7fcb2fc4d4552bdfc5ff65ce3d480 = $(`<div id="html_a8c7fcb2fc4d4552bdfc5ff65ce3d480" style="width: 100.0%; height: 100.0%;">taxi ride costed 24.80 dollars</div>`)[0];
+            popup_9f300cfa08cb4ce89a11273e2d90b16b.setContent(html_a8c7fcb2fc4d4552bdfc5ff65ce3d480);
+        
+
+        marker_210264df1bfd493a9051f1480276c386.bindPopup(popup_9f300cfa08cb4ce89a11273e2d90b16b)
+        ;
+
+        
+    
+    
+            marker_210264df1bfd493a9051f1480276c386.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c0abd1c14a3d48dfbcb23398cc19a436 = L.marker(
+                [40.71905517578125, -73.84300994873047],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_2b8f7cc77a284a5c88f1bf536771ba26 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1400ebff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_c0abd1c14a3d48dfbcb23398cc19a436.setIcon(icon_2b8f7cc77a284a5c88f1bf536771ba26);
+        
+    
+        var popup_c1e001fdd974430fb29509dd67973ee7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4a47ca30cdc04080a44ee1c8e4cc98cd = $(`<div id="html_4a47ca30cdc04080a44ee1c8e4cc98cd" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.80 dollars</div>`)[0];
+            popup_c1e001fdd974430fb29509dd67973ee7.setContent(html_4a47ca30cdc04080a44ee1c8e4cc98cd);
+        
+
+        marker_c0abd1c14a3d48dfbcb23398cc19a436.bindPopup(popup_c1e001fdd974430fb29509dd67973ee7)
+        ;
+
+        
+    
+    
+            marker_c0abd1c14a3d48dfbcb23398cc19a436.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef89102cccf848c99f5a3b180d69b5d4 = L.marker(
+                [40.719627380371094, -73.84347534179688],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_31ab41094b9a4829a8ec0182836464fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#ea0015ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_ef89102cccf848c99f5a3b180d69b5d4.setIcon(icon_31ab41094b9a4829a8ec0182836464fb);
+        
+    
+        var popup_dd33479dfbd7469a94a767040517c9ea = L.popup({"maxWidth": "100%"});
+
+        
+            var html_afccbf2bba764e2894e9baf78f044548 = $(`<div id="html_afccbf2bba764e2894e9baf78f044548" style="width: 100.0%; height: 100.0%;">taxi ride costed 49.00 dollars</div>`)[0];
+            popup_dd33479dfbd7469a94a767040517c9ea.setContent(html_afccbf2bba764e2894e9baf78f044548);
+        
+
+        marker_ef89102cccf848c99f5a3b180d69b5d4.bindPopup(popup_dd33479dfbd7469a94a767040517c9ea)
+        ;
+
+        
+    
+    
+            marker_ef89102cccf848c99f5a3b180d69b5d4.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_47c0b9bb5b914363987b42811daed62d = L.marker(
+                [40.71935272216797, -73.8426742553711],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_6333d7ab824b40c8a87f436e0fb6421e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2e00d1ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_47c0b9bb5b914363987b42811daed62d.setIcon(icon_6333d7ab824b40c8a87f436e0fb6421e);
+        
+    
+        var popup_d7a0cd95803446ee83c11a95ed46b95a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f206272250094503bf3d5719e9e6cae9 = $(`<div id="html_f206272250094503bf3d5719e9e6cae9" style="width: 100.0%; height: 100.0%;">taxi ride costed 12.80 dollars</div>`)[0];
+            popup_d7a0cd95803446ee83c11a95ed46b95a.setContent(html_f206272250094503bf3d5719e9e6cae9);
+        
+
+        marker_47c0b9bb5b914363987b42811daed62d.bindPopup(popup_d7a0cd95803446ee83c11a95ed46b95a)
+        ;
+
+        
+    
+    
+            marker_47c0b9bb5b914363987b42811daed62d.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1f0d54ede04d457ca32d99d89c23f4d2 = L.marker(
+                [40.719261169433594, -73.84232330322266],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_a4f5d9dff640481fa47935a2f406777d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0a00f5ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_1f0d54ede04d457ca32d99d89c23f4d2.setIcon(icon_a4f5d9dff640481fa47935a2f406777d);
+        
+    
+        var popup_be2f90253a2247c69f4f7279182f213f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_217e7e1b50f4431db8483c82f5ac8bd1 = $(`<div id="html_217e7e1b50f4431db8483c82f5ac8bd1" style="width: 100.0%; height: 100.0%;">taxi ride costed 5.80 dollars</div>`)[0];
+            popup_be2f90253a2247c69f4f7279182f213f.setContent(html_217e7e1b50f4431db8483c82f5ac8bd1);
+        
+
+        marker_1f0d54ede04d457ca32d99d89c23f4d2.bindPopup(popup_be2f90253a2247c69f4f7279182f213f)
+        ;
+
+        
+    
+    
+            marker_1f0d54ede04d457ca32d99d89c23f4d2.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5042b806cc374c8999ce6ac4ecacef7e = L.marker(
+                [40.719215393066406, -73.8422622680664],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_25c622d42d114cac86fcb6ab04c52887 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2400dbff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_5042b806cc374c8999ce6ac4ecacef7e.setIcon(icon_25c622d42d114cac86fcb6ab04c52887);
+        
+    
+        var popup_b11a14eeb8c64d819183a8061396e4d4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ef3a1bb6de2344f8a6b865fd6dd989fb = $(`<div id="html_ef3a1bb6de2344f8a6b865fd6dd989fb" style="width: 100.0%; height: 100.0%;">taxi ride costed 10.80 dollars</div>`)[0];
+            popup_b11a14eeb8c64d819183a8061396e4d4.setContent(html_ef3a1bb6de2344f8a6b865fd6dd989fb);
+        
+
+        marker_5042b806cc374c8999ce6ac4ecacef7e.bindPopup(popup_b11a14eeb8c64d819183a8061396e4d4)
+        ;
+
+        
+    
+    
+            marker_5042b806cc374c8999ce6ac4ecacef7e.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e85f2d4df88045d79f2e7ce0648acca5 = L.marker(
+                [40.71905517578125, -73.84417724609375],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_9600185c7a8d4b9c8fda95ca804c0458 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#82007dff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_e85f2d4df88045d79f2e7ce0648acca5.setIcon(icon_9600185c7a8d4b9c8fda95ca804c0458);
+        
+    
+        var popup_35ef04b5bedf4d9fb9f2c9ed31a33c08 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5e011c3b8f4346a98a1df507f85aa5c0 = $(`<div id="html_5e011c3b8f4346a98a1df507f85aa5c0" style="width: 100.0%; height: 100.0%;">taxi ride costed 29.00 dollars</div>`)[0];
+            popup_35ef04b5bedf4d9fb9f2c9ed31a33c08.setContent(html_5e011c3b8f4346a98a1df507f85aa5c0);
+        
+
+        marker_e85f2d4df88045d79f2e7ce0648acca5.bindPopup(popup_35ef04b5bedf4d9fb9f2c9ed31a33c08)
+        ;
+
+        
+    
+    
+            marker_e85f2d4df88045d79f2e7ce0648acca5.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74805d52b4aa4573b23fc3ec48341324 = L.marker(
+                [40.71971130371094, -73.84358978271484],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_090475f14cfa4d449b1f59a907360e5e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0f00f0ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_74805d52b4aa4573b23fc3ec48341324.setIcon(icon_090475f14cfa4d449b1f59a907360e5e);
+        
+    
+        var popup_607e9f25e85544c195d1452798eaf636 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7649295c92164b1fa6c65853efad545d = $(`<div id="html_7649295c92164b1fa6c65853efad545d" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.80 dollars</div>`)[0];
+            popup_607e9f25e85544c195d1452798eaf636.setContent(html_7649295c92164b1fa6c65853efad545d);
+        
+
+        marker_74805d52b4aa4573b23fc3ec48341324.bindPopup(popup_607e9f25e85544c195d1452798eaf636)
+        ;
+
+        
+    
+    
+            marker_74805d52b4aa4573b23fc3ec48341324.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_266f2b269b9f486c8e1fe340980b878d = L.marker(
+                [40.71974563598633, -73.84365844726562],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_54a5cc535fbc49548fbd1a9a6ccc5b3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1700e8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_266f2b269b9f486c8e1fe340980b878d.setIcon(icon_54a5cc535fbc49548fbd1a9a6ccc5b3e);
+        
+    
+        var popup_3f3473d1543b44bdae1f9c08be68b562 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4f098da3dd2e4c53913bbe825d1883ba = $(`<div id="html_4f098da3dd2e4c53913bbe825d1883ba" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.30 dollars</div>`)[0];
+            popup_3f3473d1543b44bdae1f9c08be68b562.setContent(html_4f098da3dd2e4c53913bbe825d1883ba);
+        
+
+        marker_266f2b269b9f486c8e1fe340980b878d.bindPopup(popup_3f3473d1543b44bdae1f9c08be68b562)
+        ;
+
+        
+    
+    
+            marker_266f2b269b9f486c8e1fe340980b878d.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_12926410b7164e9688a3a23d8ca894aa = L.marker(
+                [40.7192268371582, -73.8422622680664],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_97bad93938b64d10b1ff6d83c55f061c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2400dbff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_12926410b7164e9688a3a23d8ca894aa.setIcon(icon_97bad93938b64d10b1ff6d83c55f061c);
+        
+    
+        var popup_5998c34efdc94b3d8bd57ffac8235adb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3ff9aba3bd6c454681d7d438d8fb6c3f = $(`<div id="html_3ff9aba3bd6c454681d7d438d8fb6c3f" style="width: 100.0%; height: 100.0%;">taxi ride costed 10.80 dollars</div>`)[0];
+            popup_5998c34efdc94b3d8bd57ffac8235adb.setContent(html_3ff9aba3bd6c454681d7d438d8fb6c3f);
+        
+
+        marker_12926410b7164e9688a3a23d8ca894aa.bindPopup(popup_5998c34efdc94b3d8bd57ffac8235adb)
+        ;
+
+        
+    
+    
+            marker_12926410b7164e9688a3a23d8ca894aa.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a7f3d6c14b584448a87151ad383e1c79 = L.marker(
+                [40.71910858154297, -73.84201049804688],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b9fa2e7af99442c1afd25c3142fe20de = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0c00f3ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_a7f3d6c14b584448a87151ad383e1c79.setIcon(icon_b9fa2e7af99442c1afd25c3142fe20de);
+        
+    
+        var popup_f031a97a773c4a7db58d3bbc93b47821 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e7cf463039ee428aa2afb4cf802b7bde = $(`<div id="html_e7cf463039ee428aa2afb4cf802b7bde" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.30 dollars</div>`)[0];
+            popup_f031a97a773c4a7db58d3bbc93b47821.setContent(html_e7cf463039ee428aa2afb4cf802b7bde);
+        
+
+        marker_a7f3d6c14b584448a87151ad383e1c79.bindPopup(popup_f031a97a773c4a7db58d3bbc93b47821)
+        ;
+
+        
+    
+    
+            marker_a7f3d6c14b584448a87151ad383e1c79.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc4fe4966b4f462eb57e68e370653bbf = L.marker(
+                [40.719635009765625, -73.84317779541016],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_325a8cf5385c40a3add3f6c78d995ea4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2800d7ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_dc4fe4966b4f462eb57e68e370653bbf.setIcon(icon_325a8cf5385c40a3add3f6c78d995ea4);
+        
+    
+        var popup_062aa26d268c4e498b64ff007b655a2a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_32f94db41004463b9d5e401d7e3dd4d5 = $(`<div id="html_32f94db41004463b9d5e401d7e3dd4d5" style="width: 100.0%; height: 100.0%;">taxi ride costed 11.60 dollars</div>`)[0];
+            popup_062aa26d268c4e498b64ff007b655a2a.setContent(html_32f94db41004463b9d5e401d7e3dd4d5);
+        
+
+        marker_dc4fe4966b4f462eb57e68e370653bbf.bindPopup(popup_062aa26d268c4e498b64ff007b655a2a)
+        ;
+
+        
+    
+    
+            marker_dc4fe4966b4f462eb57e68e370653bbf.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4ed55b6236549e79bce0d0aeea7928f = L.marker(
+                [40.71913146972656, -73.84220886230469],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_ff1e9f0ddd8141fdbab1e2b3fc15a0ff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3e00c1ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_d4ed55b6236549e79bce0d0aeea7928f.setIcon(icon_ff1e9f0ddd8141fdbab1e2b3fc15a0ff);
+        
+    
+        var popup_617d15b7c43c456799f966c7256b4cbe = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3e39654c1b874754afe9d8faef2fa7b2 = $(`<div id="html_3e39654c1b874754afe9d8faef2fa7b2" style="width: 100.0%; height: 100.0%;">taxi ride costed 15.80 dollars</div>`)[0];
+            popup_617d15b7c43c456799f966c7256b4cbe.setContent(html_3e39654c1b874754afe9d8faef2fa7b2);
+        
+
+        marker_d4ed55b6236549e79bce0d0aeea7928f.bindPopup(popup_617d15b7c43c456799f966c7256b4cbe)
+        ;
+
+        
+    
+    
+            marker_d4ed55b6236549e79bce0d0aeea7928f.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9c7f9db3dc5f45729d694bd77e4f0cd8 = L.marker(
+                [40.71983337402344, -73.8433609008789],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_2b5f12df71ec4e15b8d75992ece98a68 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1800e7ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_9c7f9db3dc5f45729d694bd77e4f0cd8.setIcon(icon_2b5f12df71ec4e15b8d75992ece98a68);
+        
+    
+        var popup_f9e4fd33947e423393bb41fb62d07cc7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_191e30cc1ed5494dbb229519ed412447 = $(`<div id="html_191e30cc1ed5494dbb229519ed412447" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.50 dollars</div>`)[0];
+            popup_f9e4fd33947e423393bb41fb62d07cc7.setContent(html_191e30cc1ed5494dbb229519ed412447);
+        
+
+        marker_9c7f9db3dc5f45729d694bd77e4f0cd8.bindPopup(popup_f9e4fd33947e423393bb41fb62d07cc7)
+        ;
+
+        
+    
+    
+            marker_9c7f9db3dc5f45729d694bd77e4f0cd8.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc6ff61a850748358ef141c6c15a5b5a = L.marker(
+                [40.7195930480957, -73.84325408935547],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_977eb77f2a984dc0ace408d3d48e77a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1900e6ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_cc6ff61a850748358ef141c6c15a5b5a.setIcon(icon_977eb77f2a984dc0ace408d3d48e77a7);
+        
+    
+        var popup_e3490c05f48d49d1970c109838236c29 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cc2700da3d4049549742fe9c34bc42a0 = $(`<div id="html_cc2700da3d4049549742fe9c34bc42a0" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.80 dollars</div>`)[0];
+            popup_e3490c05f48d49d1970c109838236c29.setContent(html_cc2700da3d4049549742fe9c34bc42a0);
+        
+
+        marker_cc6ff61a850748358ef141c6c15a5b5a.bindPopup(popup_e3490c05f48d49d1970c109838236c29)
+        ;
+
+        
+    
+    
+            marker_cc6ff61a850748358ef141c6c15a5b5a.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11da0074f79a4ac786c028599abee72d = L.marker(
+                [40.719242095947266, -73.84239959716797],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b2a780b9d3c24d59843ae272d7c631a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0000ffff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_11da0074f79a4ac786c028599abee72d.setIcon(icon_b2a780b9d3c24d59843ae272d7c631a1);
+        
+    
+        var popup_253afbcd3ba446daa63f0d8440fc602e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9645c789552442f896925a326e7ef250 = $(`<div id="html_9645c789552442f896925a326e7ef250" style="width: 100.0%; height: 100.0%;">taxi ride costed 3.80 dollars</div>`)[0];
+            popup_253afbcd3ba446daa63f0d8440fc602e.setContent(html_9645c789552442f896925a326e7ef250);
+        
+
+        marker_11da0074f79a4ac786c028599abee72d.bindPopup(popup_253afbcd3ba446daa63f0d8440fc602e)
+        ;
+
+        
+    
+    
+            marker_11da0074f79a4ac786c028599abee72d.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8082d6c38954275a7756549581591c6 = L.marker(
+                [40.719276428222656, -73.84243774414062],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_c417a5faf297438da189747165b7e980 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1700e8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_c8082d6c38954275a7756549581591c6.setIcon(icon_c417a5faf297438da189747165b7e980);
+        
+    
+        var popup_9a0bbd60e46b4be6a73f1dd7d41f2f3d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_383c2879ed7d46eaae7e390a9e87f454 = $(`<div id="html_383c2879ed7d46eaae7e390a9e87f454" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.30 dollars</div>`)[0];
+            popup_9a0bbd60e46b4be6a73f1dd7d41f2f3d.setContent(html_383c2879ed7d46eaae7e390a9e87f454);
+        
+
+        marker_c8082d6c38954275a7756549581591c6.bindPopup(popup_9a0bbd60e46b4be6a73f1dd7d41f2f3d)
+        ;
+
+        
+    
+    
+            marker_c8082d6c38954275a7756549581591c6.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e0a667c197e446a899579626169d4d32 = L.marker(
+                [40.7197265625, -73.84239959716797],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_4beb462b820f476ea415b6395b27e88f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3300ccff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_e0a667c197e446a899579626169d4d32.setIcon(icon_4beb462b820f476ea415b6395b27e88f);
+        
+    
+        var popup_f0f476fca5fc4c0197d9792136609471 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bcc7752ff58b4f819fde30f15baa6a49 = $(`<div id="html_bcc7752ff58b4f819fde30f15baa6a49" style="width: 100.0%; height: 100.0%;">taxi ride costed 13.80 dollars</div>`)[0];
+            popup_f0f476fca5fc4c0197d9792136609471.setContent(html_bcc7752ff58b4f819fde30f15baa6a49);
+        
+
+        marker_e0a667c197e446a899579626169d4d32.bindPopup(popup_f0f476fca5fc4c0197d9792136609471)
+        ;
+
+        
+    
+    
+            marker_e0a667c197e446a899579626169d4d32.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5d58f63042a457397d4bd50284a2fd4 = L.marker(
+                [40.719696044921875, -73.8434829711914],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_2332bb036be14844836c6ca49ef1547e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0d00f2ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_a5d58f63042a457397d4bd50284a2fd4.setIcon(icon_2332bb036be14844836c6ca49ef1547e);
+        
+    
+        var popup_ae3efe65d0fd4be89e41f3c4d75db95a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f10181400f0145e4941811411579f51c = $(`<div id="html_f10181400f0145e4941811411579f51c" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.35 dollars</div>`)[0];
+            popup_ae3efe65d0fd4be89e41f3c4d75db95a.setContent(html_f10181400f0145e4941811411579f51c);
+        
+
+        marker_a5d58f63042a457397d4bd50284a2fd4.bindPopup(popup_ae3efe65d0fd4be89e41f3c4d75db95a)
+        ;
+
+        
+    
+    
+            marker_a5d58f63042a457397d4bd50284a2fd4.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2963ee6976c142a79f454c57892ea745 = L.marker(
+                [40.71966552734375, -73.84326934814453],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_1cc6a29de68441aca09b4060e626a6e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1c00e3ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_2963ee6976c142a79f454c57892ea745.setIcon(icon_1cc6a29de68441aca09b4060e626a6e0);
+        
+    
+        var popup_31d175c7dccf4a808f0cce55314aa9a9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3ca8c194932740dcaa8dbf84c93df3af = $(`<div id="html_3ca8c194932740dcaa8dbf84c93df3af" style="width: 100.0%; height: 100.0%;">taxi ride costed 9.30 dollars</div>`)[0];
+            popup_31d175c7dccf4a808f0cce55314aa9a9.setContent(html_3ca8c194932740dcaa8dbf84c93df3af);
+        
+
+        marker_2963ee6976c142a79f454c57892ea745.bindPopup(popup_31d175c7dccf4a808f0cce55314aa9a9)
+        ;
+
+        
+    
+    
+            marker_2963ee6976c142a79f454c57892ea745.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_30f16d21a4764398baa09fc617b609ce = L.marker(
+                [40.7197265625, -73.84345245361328],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_dc1adfa3eef842bd9a3cbe8a1914c00e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1800e7ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_30f16d21a4764398baa09fc617b609ce.setIcon(icon_dc1adfa3eef842bd9a3cbe8a1914c00e);
+        
+    
+        var popup_5c607446cb1249f782186e38749eadcd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_17e6771d6c8f4e51a319f3e341f1b831 = $(`<div id="html_17e6771d6c8f4e51a319f3e341f1b831" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.60 dollars</div>`)[0];
+            popup_5c607446cb1249f782186e38749eadcd.setContent(html_17e6771d6c8f4e51a319f3e341f1b831);
+        
+
+        marker_30f16d21a4764398baa09fc617b609ce.bindPopup(popup_5c607446cb1249f782186e38749eadcd)
+        ;
+
+        
+    
+    
+            marker_30f16d21a4764398baa09fc617b609ce.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f25218b739f4ac68cc8a7b7ac2d662b = L.marker(
+                [40.71929168701172, -73.84258270263672],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_866734a366c44a79b732008b96c7843f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1400ebff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_2f25218b739f4ac68cc8a7b7ac2d662b.setIcon(icon_866734a366c44a79b732008b96c7843f);
+        
+    
+        var popup_94e8f31e787843e0bfbd5f7f713b6b2f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_65fb10acd88e4a5f8ec586badd7c8463 = $(`<div id="html_65fb10acd88e4a5f8ec586badd7c8463" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.80 dollars</div>`)[0];
+            popup_94e8f31e787843e0bfbd5f7f713b6b2f.setContent(html_65fb10acd88e4a5f8ec586badd7c8463);
+        
+
+        marker_2f25218b739f4ac68cc8a7b7ac2d662b.bindPopup(popup_94e8f31e787843e0bfbd5f7f713b6b2f)
+        ;
+
+        
+    
+    
+            marker_2f25218b739f4ac68cc8a7b7ac2d662b.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_439c7a2fc4bd45aca5c5bc01e61fb9cb = L.marker(
+                [40.719173431396484, -73.84217071533203],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_377a86e1f66446f79760136b2ad7b795 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0f00f0ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_439c7a2fc4bd45aca5c5bc01e61fb9cb.setIcon(icon_377a86e1f66446f79760136b2ad7b795);
+        
+    
+        var popup_de2ec881c5c942e5a492ab5ee57346e3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_295942cb3cc444c0a78d9db0905ad25e = $(`<div id="html_295942cb3cc444c0a78d9db0905ad25e" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.80 dollars</div>`)[0];
+            popup_de2ec881c5c942e5a492ab5ee57346e3.setContent(html_295942cb3cc444c0a78d9db0905ad25e);
+        
+
+        marker_439c7a2fc4bd45aca5c5bc01e61fb9cb.bindPopup(popup_de2ec881c5c942e5a492ab5ee57346e3)
+        ;
+
+        
+    
+    
+            marker_439c7a2fc4bd45aca5c5bc01e61fb9cb.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57d08f977d264523a245711e659d71c8 = L.marker(
+                [40.719200134277344, -73.84217071533203],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_0996fc095a3b4f0081cd419cb35578e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1200edff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_57d08f977d264523a245711e659d71c8.setIcon(icon_0996fc095a3b4f0081cd419cb35578e3);
+        
+    
+        var popup_c0aeec224517442cb561c441580ef37d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_939d16284d0f40cbbd50fb9166d61598 = $(`<div id="html_939d16284d0f40cbbd50fb9166d61598" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.30 dollars</div>`)[0];
+            popup_c0aeec224517442cb561c441580ef37d.setContent(html_939d16284d0f40cbbd50fb9166d61598);
+        
+
+        marker_57d08f977d264523a245711e659d71c8.bindPopup(popup_c0aeec224517442cb561c441580ef37d)
+        ;
+
+        
+    
+    
+            marker_57d08f977d264523a245711e659d71c8.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0825dc8af64440c490c492f1d0c4661f = L.marker(
+                [40.719146728515625, -73.84231567382812],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_a106cd72fa1646f3b7c1846c01333173 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1900e6ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_0825dc8af64440c490c492f1d0c4661f.setIcon(icon_a106cd72fa1646f3b7c1846c01333173);
+        
+    
+        var popup_3bd236f78002445eaa014ff44d730bbe = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f2962f392ec34c56aaa4d0b4f7750111 = $(`<div id="html_f2962f392ec34c56aaa4d0b4f7750111" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.80 dollars</div>`)[0];
+            popup_3bd236f78002445eaa014ff44d730bbe.setContent(html_f2962f392ec34c56aaa4d0b4f7750111);
+        
+
+        marker_0825dc8af64440c490c492f1d0c4661f.bindPopup(popup_3bd236f78002445eaa014ff44d730bbe)
+        ;
+
+        
+    
+    
+            marker_0825dc8af64440c490c492f1d0c4661f.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_adf48bd8334740aba90a2017cc724232 = L.marker(
+                [40.71923828125, -73.8423843383789],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_65ae24558001411099818d9743ac1b8e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2100deff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_adf48bd8334740aba90a2017cc724232.setIcon(icon_65ae24558001411099818d9743ac1b8e);
+        
+    
+        var popup_23a7f9c7f03b422aab802a8912678cf1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_368047ad975c4fc28dd3fa3b6f891ebc = $(`<div id="html_368047ad975c4fc28dd3fa3b6f891ebc" style="width: 100.0%; height: 100.0%;">taxi ride costed 10.30 dollars</div>`)[0];
+            popup_23a7f9c7f03b422aab802a8912678cf1.setContent(html_368047ad975c4fc28dd3fa3b6f891ebc);
+        
+
+        marker_adf48bd8334740aba90a2017cc724232.bindPopup(popup_23a7f9c7f03b422aab802a8912678cf1)
+        ;
+
+        
+    
+    
+            marker_adf48bd8334740aba90a2017cc724232.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26979663d8754847a1c773e2a5084c6f = L.marker(
+                [40.719520568847656, -73.84266662597656],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_ee53ce61504b4f21a281e71c22a84bb3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2e00d1ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_26979663d8754847a1c773e2a5084c6f.setIcon(icon_ee53ce61504b4f21a281e71c22a84bb3);
+        
+    
+        var popup_3c69e01c918c413090fcd3d6dc9ae56c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fa1723787ec6422b8d69c2761e4facd3 = $(`<div id="html_fa1723787ec6422b8d69c2761e4facd3" style="width: 100.0%; height: 100.0%;">taxi ride costed 12.80 dollars</div>`)[0];
+            popup_3c69e01c918c413090fcd3d6dc9ae56c.setContent(html_fa1723787ec6422b8d69c2761e4facd3);
+        
+
+        marker_26979663d8754847a1c773e2a5084c6f.bindPopup(popup_3c69e01c918c413090fcd3d6dc9ae56c)
+        ;
+
+        
+    
+    
+            marker_26979663d8754847a1c773e2a5084c6f.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_943aa64d23a74c768f58ff4528eba074 = L.marker(
+                [40.719791412353516, -73.84236145019531],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_f4d1fa1e12004411bd31011940a6c7fe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#4300bcff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_943aa64d23a74c768f58ff4528eba074.setIcon(icon_f4d1fa1e12004411bd31011940a6c7fe);
+        
+    
+        var popup_cef92d28538b415ea73c278cae636386 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dae7b771994541d2a827cb6ad660caec = $(`<div id="html_dae7b771994541d2a827cb6ad660caec" style="width: 100.0%; height: 100.0%;">taxi ride costed 16.80 dollars</div>`)[0];
+            popup_cef92d28538b415ea73c278cae636386.setContent(html_dae7b771994541d2a827cb6ad660caec);
+        
+
+        marker_943aa64d23a74c768f58ff4528eba074.bindPopup(popup_cef92d28538b415ea73c278cae636386)
+        ;
+
+        
+    
+    
+            marker_943aa64d23a74c768f58ff4528eba074.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cf243a936ca741b8b6729d87778355b4 = L.marker(
+                [40.7192268371582, -73.84233856201172],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_164e2853cb194bd985644bb38d68ddf2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2500daff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_cf243a936ca741b8b6729d87778355b4.setIcon(icon_164e2853cb194bd985644bb38d68ddf2);
+        
+    
+        var popup_36b941cbc3c548ad92140c0d6fc289b1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f4ed6e99e4494784a98deb352d67e6aa = $(`<div id="html_f4ed6e99e4494784a98deb352d67e6aa" style="width: 100.0%; height: 100.0%;">taxi ride costed 11.00 dollars</div>`)[0];
+            popup_36b941cbc3c548ad92140c0d6fc289b1.setContent(html_f4ed6e99e4494784a98deb352d67e6aa);
+        
+
+        marker_cf243a936ca741b8b6729d87778355b4.bindPopup(popup_36b941cbc3c548ad92140c0d6fc289b1)
+        ;
+
+        
+    
+    
+            marker_cf243a936ca741b8b6729d87778355b4.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9635b12fcb514c8f82943422c98c54c6 = L.marker(
+                [40.71969223022461, -73.84342956542969],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_bb23839c0c3047eba41afbfdbf25d74a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0700f8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_9635b12fcb514c8f82943422c98c54c6.setIcon(icon_bb23839c0c3047eba41afbfdbf25d74a);
+        
+    
+        var popup_b8c8523f706646439cbaf058c071ff59 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_013504c3fe724a6ba925ae857bee07c0 = $(`<div id="html_013504c3fe724a6ba925ae857bee07c0" style="width: 100.0%; height: 100.0%;">taxi ride costed 5.30 dollars</div>`)[0];
+            popup_b8c8523f706646439cbaf058c071ff59.setContent(html_013504c3fe724a6ba925ae857bee07c0);
+        
+
+        marker_9635b12fcb514c8f82943422c98c54c6.bindPopup(popup_b8c8523f706646439cbaf058c071ff59)
+        ;
+
+        
+    
+    
+            marker_9635b12fcb514c8f82943422c98c54c6.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a9295f1e18df48fe88c394d54b3c8479 = L.marker(
+                [40.71928024291992, -73.8424072265625],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_7d1aa6481472459f97e178247aa29342 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#73008cff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_a9295f1e18df48fe88c394d54b3c8479.setIcon(icon_7d1aa6481472459f97e178247aa29342);
+        
+    
+        var popup_79c0a51db38f4b1ca71f3af7343297d0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d2675825b3f741b1858f6888e25c7385 = $(`<div id="html_d2675825b3f741b1858f6888e25c7385" style="width: 100.0%; height: 100.0%;">taxi ride costed 26.00 dollars</div>`)[0];
+            popup_79c0a51db38f4b1ca71f3af7343297d0.setContent(html_d2675825b3f741b1858f6888e25c7385);
+        
+
+        marker_a9295f1e18df48fe88c394d54b3c8479.bindPopup(popup_79c0a51db38f4b1ca71f3af7343297d0)
+        ;
+
+        
+    
+    
+            marker_a9295f1e18df48fe88c394d54b3c8479.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78daeaccba7e4a91b13067b789790ec1 = L.marker(
+                [40.719512939453125, -73.84294891357422],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b40b10b2c5df4d4e81758a082e4eb8b0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#a90056ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_78daeaccba7e4a91b13067b789790ec1.setIcon(icon_b40b10b2c5df4d4e81758a082e4eb8b0);
+        
+    
+        var popup_8ca379e707704d7889a9cfdc41de3e05 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_76bfe0b812ac45f18d30ae0bf9806e30 = $(`<div id="html_76bfe0b812ac45f18d30ae0bf9806e30" style="width: 100.0%; height: 100.0%;">taxi ride costed 36.42 dollars</div>`)[0];
+            popup_8ca379e707704d7889a9cfdc41de3e05.setContent(html_76bfe0b812ac45f18d30ae0bf9806e30);
+        
+
+        marker_78daeaccba7e4a91b13067b789790ec1.bindPopup(popup_8ca379e707704d7889a9cfdc41de3e05)
+        ;
+
+        
+    
+    
+            marker_78daeaccba7e4a91b13067b789790ec1.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a1b278e90de4203b33bb7d5b699a08e = L.marker(
+                [40.71919631958008, -73.84224700927734],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_2ff438f349704d198e6d9c88369c04d3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2e00d1ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_2a1b278e90de4203b33bb7d5b699a08e.setIcon(icon_2ff438f349704d198e6d9c88369c04d3);
+        
+    
+        var popup_192ca700788749d592555418b06303d4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_92b9435be4dc41c98e5876edb74c0056 = $(`<div id="html_92b9435be4dc41c98e5876edb74c0056" style="width: 100.0%; height: 100.0%;">taxi ride costed 12.80 dollars</div>`)[0];
+            popup_192ca700788749d592555418b06303d4.setContent(html_92b9435be4dc41c98e5876edb74c0056);
+        
+
+        marker_2a1b278e90de4203b33bb7d5b699a08e.bindPopup(popup_192ca700788749d592555418b06303d4)
+        ;
+
+        
+    
+    
+            marker_2a1b278e90de4203b33bb7d5b699a08e.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d33e5ba54d848b8a772fb9e1a794ab7 = L.marker(
+                [40.719478607177734, -73.84288787841797],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_4aad5dd2571947aa918dd40c8d010a51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0a00f5ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_8d33e5ba54d848b8a772fb9e1a794ab7.setIcon(icon_4aad5dd2571947aa918dd40c8d010a51);
+        
+    
+        var popup_5b7a725daf1940c298ca4f69417b039c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_72bc4604a4f1491685163cd3ed3af9b3 = $(`<div id="html_72bc4604a4f1491685163cd3ed3af9b3" style="width: 100.0%; height: 100.0%;">taxi ride costed 5.80 dollars</div>`)[0];
+            popup_5b7a725daf1940c298ca4f69417b039c.setContent(html_72bc4604a4f1491685163cd3ed3af9b3);
+        
+
+        marker_8d33e5ba54d848b8a772fb9e1a794ab7.bindPopup(popup_5b7a725daf1940c298ca4f69417b039c)
+        ;
+
+        
+    
+    
+            marker_8d33e5ba54d848b8a772fb9e1a794ab7.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d9831b97a5a47d49527dd44752141b2 = L.marker(
+                [40.719051361083984, -73.84412384033203],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_7c6d4fb7ec6f44c4a28cdd845c316db5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#5800a7ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_0d9831b97a5a47d49527dd44752141b2.setIcon(icon_7c6d4fb7ec6f44c4a28cdd845c316db5);
+        
+    
+        var popup_f74927484eca4b1aab13a582b31eaae3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a918b61bf5634a0d924df73ad5e08ae5 = $(`<div id="html_a918b61bf5634a0d924df73ad5e08ae5" style="width: 100.0%; height: 100.0%;">taxi ride costed 20.80 dollars</div>`)[0];
+            popup_f74927484eca4b1aab13a582b31eaae3.setContent(html_a918b61bf5634a0d924df73ad5e08ae5);
+        
+
+        marker_0d9831b97a5a47d49527dd44752141b2.bindPopup(popup_f74927484eca4b1aab13a582b31eaae3)
+        ;
+
+        
+    
+    
+            marker_0d9831b97a5a47d49527dd44752141b2.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_62fb4710ee5b4a2782170d835b5a3a83 = L.marker(
+                [40.71949768066406, -73.84286499023438],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_6aefdc602a744173afb459dc408ece8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#ab0054ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_62fb4710ee5b4a2782170d835b5a3a83.setIcon(icon_6aefdc602a744173afb459dc408ece8b);
+        
+    
+        var popup_fe34a189ca4c40ffba4f6e53961a6d70 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d20f7ad7945b48d3b9969db5b6eb871a = $(`<div id="html_d20f7ad7945b48d3b9969db5b6eb871a" style="width: 100.0%; height: 100.0%;">taxi ride costed 36.80 dollars</div>`)[0];
+            popup_fe34a189ca4c40ffba4f6e53961a6d70.setContent(html_d20f7ad7945b48d3b9969db5b6eb871a);
+        
+
+        marker_62fb4710ee5b4a2782170d835b5a3a83.bindPopup(popup_fe34a189ca4c40ffba4f6e53961a6d70)
+        ;
+
+        
+    
+    
+            marker_62fb4710ee5b4a2782170d835b5a3a83.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cf385ee7aec14e3f9131bd3c273b5a61 = L.marker(
+                [40.71928787231445, -73.84253692626953],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_cf9cab010a5e4a13b01a3f2ba6d3e948 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#8c0073ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_cf385ee7aec14e3f9131bd3c273b5a61.setIcon(icon_cf9cab010a5e4a13b01a3f2ba6d3e948);
+        
+    
+        var popup_c245b8398300487f9ee9df9855a158ff = L.popup({"maxWidth": "100%"});
+
+        
+            var html_daad9ba50e824421bc46574e357648b3 = $(`<div id="html_daad9ba50e824421bc46574e357648b3" style="width: 100.0%; height: 100.0%;">taxi ride costed 30.80 dollars</div>`)[0];
+            popup_c245b8398300487f9ee9df9855a158ff.setContent(html_daad9ba50e824421bc46574e357648b3);
+        
+
+        marker_cf385ee7aec14e3f9131bd3c273b5a61.bindPopup(popup_c245b8398300487f9ee9df9855a158ff)
+        ;
+
+        
+    
+    
+            marker_cf385ee7aec14e3f9131bd3c273b5a61.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_803593a8ebf44b999e8559d94eaa1f14 = L.marker(
+                [40.719627380371094, -73.84246826171875],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_8965326c0185498e9a170221907535b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2100deff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_803593a8ebf44b999e8559d94eaa1f14.setIcon(icon_8965326c0185498e9a170221907535b5);
+        
+    
+        var popup_d1fd29bf45824fd8bfc6e456f19fdc17 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eee272ed6e2f4ddbbb5c40028aa97b7d = $(`<div id="html_eee272ed6e2f4ddbbb5c40028aa97b7d" style="width: 100.0%; height: 100.0%;">taxi ride costed 10.30 dollars</div>`)[0];
+            popup_d1fd29bf45824fd8bfc6e456f19fdc17.setContent(html_eee272ed6e2f4ddbbb5c40028aa97b7d);
+        
+
+        marker_803593a8ebf44b999e8559d94eaa1f14.bindPopup(popup_d1fd29bf45824fd8bfc6e456f19fdc17)
+        ;
+
+        
+    
+    
+            marker_803593a8ebf44b999e8559d94eaa1f14.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1efa31b28d14dd39561fb3a5794e1ef = L.marker(
+                [40.71965026855469, -73.84291076660156],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_84cc5e65708842a5bac169e116793a31 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1500eaff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_d1efa31b28d14dd39561fb3a5794e1ef.setIcon(icon_84cc5e65708842a5bac169e116793a31);
+        
+    
+        var popup_87cf9b3cb3064b018cc560f7a7b4f45b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0fce02b8a43b428a80fd67a108742fd6 = $(`<div id="html_0fce02b8a43b428a80fd67a108742fd6" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.00 dollars</div>`)[0];
+            popup_87cf9b3cb3064b018cc560f7a7b4f45b.setContent(html_0fce02b8a43b428a80fd67a108742fd6);
+        
+
+        marker_d1efa31b28d14dd39561fb3a5794e1ef.bindPopup(popup_87cf9b3cb3064b018cc560f7a7b4f45b)
+        ;
+
+        
+    
+    
+            marker_d1efa31b28d14dd39561fb3a5794e1ef.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8890d277d20e4f6a8cc65c813595a707 = L.marker(
+                [40.719200134277344, -73.84223937988281],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_a712dba960ed4152a7054b48f1575151 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3100ceff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_8890d277d20e4f6a8cc65c813595a707.setIcon(icon_a712dba960ed4152a7054b48f1575151);
+        
+    
+        var popup_14890c2ecf364a4bac619f9fc7a49c52 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d90a1c8d09b54550baba10842e08556b = $(`<div id="html_d90a1c8d09b54550baba10842e08556b" style="width: 100.0%; height: 100.0%;">taxi ride costed 13.30 dollars</div>`)[0];
+            popup_14890c2ecf364a4bac619f9fc7a49c52.setContent(html_d90a1c8d09b54550baba10842e08556b);
+        
+
+        marker_8890d277d20e4f6a8cc65c813595a707.bindPopup(popup_14890c2ecf364a4bac619f9fc7a49c52)
+        ;
+
+        
+    
+    
+            marker_8890d277d20e4f6a8cc65c813595a707.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6eb48a7c10ea48b0917a0add459252a8 = L.marker(
+                [40.71915817260742, -73.84195709228516],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_ba289795b67544c98f84f1c7bf2e5508 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#2600d9ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_6eb48a7c10ea48b0917a0add459252a8.setIcon(icon_ba289795b67544c98f84f1c7bf2e5508);
+        
+    
+        var popup_394b651879864873ab0aadfa7e8596f7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_15b336c8f1424e5f95ce88d5d0eece35 = $(`<div id="html_15b336c8f1424e5f95ce88d5d0eece35" style="width: 100.0%; height: 100.0%;">taxi ride costed 11.30 dollars</div>`)[0];
+            popup_394b651879864873ab0aadfa7e8596f7.setContent(html_15b336c8f1424e5f95ce88d5d0eece35);
+        
+
+        marker_6eb48a7c10ea48b0917a0add459252a8.bindPopup(popup_394b651879864873ab0aadfa7e8596f7)
+        ;
+
+        
+    
+    
+            marker_6eb48a7c10ea48b0917a0add459252a8.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_30a2075d12c34222a5019fd181e96070 = L.marker(
+                [40.7193717956543, -73.84281921386719],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_322ada22a55f44daa0c8927d53bd66d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#ff0000ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_30a2075d12c34222a5019fd181e96070.setIcon(icon_322ada22a55f44daa0c8927d53bd66d9);
+        
+    
+        var popup_33412b6cd55045a0bc610e93426a6f29 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c2d03932e4ad4008883e1583222fc805 = $(`<div id="html_c2d03932e4ad4008883e1583222fc805" style="width: 100.0%; height: 100.0%;">taxi ride costed 53.09 dollars</div>`)[0];
+            popup_33412b6cd55045a0bc610e93426a6f29.setContent(html_c2d03932e4ad4008883e1583222fc805);
+        
+
+        marker_30a2075d12c34222a5019fd181e96070.bindPopup(popup_33412b6cd55045a0bc610e93426a6f29)
+        ;
+
+        
+    
+    
+            marker_30a2075d12c34222a5019fd181e96070.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_588d09f0ab50442f974bf810dfec8dd7 = L.marker(
+                [40.71976089477539, -73.84356689453125],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_000ab25fdb2f48829231c2848eea7218 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1700e8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_588d09f0ab50442f974bf810dfec8dd7.setIcon(icon_000ab25fdb2f48829231c2848eea7218);
+        
+    
+        var popup_17158b81232b4f01a5a2211c892c1908 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dbfe27d78cce40778188bf3f1201e209 = $(`<div id="html_dbfe27d78cce40778188bf3f1201e209" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.30 dollars</div>`)[0];
+            popup_17158b81232b4f01a5a2211c892c1908.setContent(html_dbfe27d78cce40778188bf3f1201e209);
+        
+
+        marker_588d09f0ab50442f974bf810dfec8dd7.bindPopup(popup_17158b81232b4f01a5a2211c892c1908)
+        ;
+
+        
+    
+    
+            marker_588d09f0ab50442f974bf810dfec8dd7.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4272f300807a479aa8605c4c278bffa3 = L.marker(
+                [40.719566345214844, -73.84307861328125],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_8217afbef8f242f69156c6d9be2b6f1e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1200edff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_4272f300807a479aa8605c4c278bffa3.setIcon(icon_8217afbef8f242f69156c6d9be2b6f1e);
+        
+    
+        var popup_edb11e554f0c4d2a9cd1efda6c42a766 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4235a296dbbc496999cc0327581d41d1 = $(`<div id="html_4235a296dbbc496999cc0327581d41d1" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.40 dollars</div>`)[0];
+            popup_edb11e554f0c4d2a9cd1efda6c42a766.setContent(html_4235a296dbbc496999cc0327581d41d1);
+        
+
+        marker_4272f300807a479aa8605c4c278bffa3.bindPopup(popup_edb11e554f0c4d2a9cd1efda6c42a766)
+        ;
+
+        
+    
+    
+            marker_4272f300807a479aa8605c4c278bffa3.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f0423ae73e04dfa8d538e7fccca025b = L.marker(
+                [40.71930694580078, -73.842529296875],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_22e5d0e99d9949e9b2ee0c66cf240879 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#8f0070ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_5f0423ae73e04dfa8d538e7fccca025b.setIcon(icon_22e5d0e99d9949e9b2ee0c66cf240879);
+        
+    
+        var popup_61a559b7c2f14bc0b515365bf3c5c71c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c58cfdcb2fb3425b89515d5ef2c5ab7c = $(`<div id="html_c58cfdcb2fb3425b89515d5ef2c5ab7c" style="width: 100.0%; height: 100.0%;">taxi ride costed 31.40 dollars</div>`)[0];
+            popup_61a559b7c2f14bc0b515365bf3c5c71c.setContent(html_c58cfdcb2fb3425b89515d5ef2c5ab7c);
+        
+
+        marker_5f0423ae73e04dfa8d538e7fccca025b.bindPopup(popup_61a559b7c2f14bc0b515365bf3c5c71c)
+        ;
+
+        
+    
+    
+            marker_5f0423ae73e04dfa8d538e7fccca025b.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c2b1ad069121404e97d0e5cdacff3ea4 = L.marker(
+                [40.719398498535156, -73.84275817871094],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b85138f33941429a94c0a6dfae6e7235 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#4d00b2ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_c2b1ad069121404e97d0e5cdacff3ea4.setIcon(icon_b85138f33941429a94c0a6dfae6e7235);
+        
+    
+        var popup_515652a4bde04349bdf0a769677c2330 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d8c7353a68374bcea31c9a411bf5ee2e = $(`<div id="html_d8c7353a68374bcea31c9a411bf5ee2e" style="width: 100.0%; height: 100.0%;">taxi ride costed 18.80 dollars</div>`)[0];
+            popup_515652a4bde04349bdf0a769677c2330.setContent(html_d8c7353a68374bcea31c9a411bf5ee2e);
+        
+
+        marker_c2b1ad069121404e97d0e5cdacff3ea4.bindPopup(popup_515652a4bde04349bdf0a769677c2330)
+        ;
+
+        
+    
+    
+            marker_c2b1ad069121404e97d0e5cdacff3ea4.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c4d62c7a39ec411cafcf0283cee92518 = L.marker(
+                [40.71912384033203, -73.8422622680664],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_894a1d7c959b4f478e1f5631a4cb8001 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0f00f0ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_c4d62c7a39ec411cafcf0283cee92518.setIcon(icon_894a1d7c959b4f478e1f5631a4cb8001);
+        
+    
+        var popup_f8251021bd654af6a4acafa100fc9771 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e5e1b899310f45fbb6165ac8e89b92a5 = $(`<div id="html_e5e1b899310f45fbb6165ac8e89b92a5" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.80 dollars</div>`)[0];
+            popup_f8251021bd654af6a4acafa100fc9771.setContent(html_e5e1b899310f45fbb6165ac8e89b92a5);
+        
+
+        marker_c4d62c7a39ec411cafcf0283cee92518.bindPopup(popup_f8251021bd654af6a4acafa100fc9771)
+        ;
+
+        
+    
+    
+            marker_c4d62c7a39ec411cafcf0283cee92518.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_123110df06864d1982599335898e329f = L.marker(
+                [40.719085693359375, -73.84185791015625],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_bd96f1e267ca4e1c9532a4982900ad05 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1b00e4ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_123110df06864d1982599335898e329f.setIcon(icon_bd96f1e267ca4e1c9532a4982900ad05);
+        
+    
+        var popup_22d9934907fe48a4bc40e6af7c754e8d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0d978e60323244c0bdced52627d5a2b2 = $(`<div id="html_0d978e60323244c0bdced52627d5a2b2" style="width: 100.0%; height: 100.0%;">taxi ride costed 9.10 dollars</div>`)[0];
+            popup_22d9934907fe48a4bc40e6af7c754e8d.setContent(html_0d978e60323244c0bdced52627d5a2b2);
+        
+
+        marker_123110df06864d1982599335898e329f.bindPopup(popup_22d9934907fe48a4bc40e6af7c754e8d)
+        ;
+
+        
+    
+    
+            marker_123110df06864d1982599335898e329f.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68ba04b3c37c4f8ca8ce03d8043c3552 = L.marker(
+                [40.71941375732422, -73.84275817871094],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_598b72f6d1414fa29c5963811cd6da01 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3100ceff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_68ba04b3c37c4f8ca8ce03d8043c3552.setIcon(icon_598b72f6d1414fa29c5963811cd6da01);
+        
+    
+        var popup_7fa307895c1541309a398f63874f1b59 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_65cfcdfcfcb64556abb0b95cf0c12d7d = $(`<div id="html_65cfcdfcfcb64556abb0b95cf0c12d7d" style="width: 100.0%; height: 100.0%;">taxi ride costed 13.40 dollars</div>`)[0];
+            popup_7fa307895c1541309a398f63874f1b59.setContent(html_65cfcdfcfcb64556abb0b95cf0c12d7d);
+        
+
+        marker_68ba04b3c37c4f8ca8ce03d8043c3552.bindPopup(popup_7fa307895c1541309a398f63874f1b59)
+        ;
+
+        
+    
+    
+            marker_68ba04b3c37c4f8ca8ce03d8043c3552.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b75b4dddb09a4c9cbb8a379bd882c91e = L.marker(
+                [40.71941375732422, -73.8426284790039],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_2bbd9dd060c144d39e9037f410ae36d0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1500eaff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_b75b4dddb09a4c9cbb8a379bd882c91e.setIcon(icon_2bbd9dd060c144d39e9037f410ae36d0);
+        
+    
+        var popup_adf65456773b4e52a0aaf4de8d2b5037 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_52ed3e9f9c9549f8b19a9ae8f06584ec = $(`<div id="html_52ed3e9f9c9549f8b19a9ae8f06584ec" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.95 dollars</div>`)[0];
+            popup_adf65456773b4e52a0aaf4de8d2b5037.setContent(html_52ed3e9f9c9549f8b19a9ae8f06584ec);
+        
+
+        marker_b75b4dddb09a4c9cbb8a379bd882c91e.bindPopup(popup_adf65456773b4e52a0aaf4de8d2b5037)
+        ;
+
+        
+    
+    
+            marker_b75b4dddb09a4c9cbb8a379bd882c91e.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b414cf798f6e4e0aaa2900271bc24201 = L.marker(
+                [40.71956253051758, -73.84293365478516],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_16f40a70980a4cb68c4d542716ac4d7b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#3600c9ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_b414cf798f6e4e0aaa2900271bc24201.setIcon(icon_16f40a70980a4cb68c4d542716ac4d7b);
+        
+    
+        var popup_79d7ecd7dc6548a3a0028819e75f1fd9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9752363d860e40f49e8f3988af6cb20f = $(`<div id="html_9752363d860e40f49e8f3988af6cb20f" style="width: 100.0%; height: 100.0%;">taxi ride costed 14.30 dollars</div>`)[0];
+            popup_79d7ecd7dc6548a3a0028819e75f1fd9.setContent(html_9752363d860e40f49e8f3988af6cb20f);
+        
+
+        marker_b414cf798f6e4e0aaa2900271bc24201.bindPopup(popup_79d7ecd7dc6548a3a0028819e75f1fd9)
+        ;
+
+        
+    
+    
+            marker_b414cf798f6e4e0aaa2900271bc24201.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ecee45df9c148159236600db04c0117 = L.marker(
+                [40.71928787231445, -73.8423843383789],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_6091006f2cf048a99246e8d9e8bbcacf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#5000afff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_6ecee45df9c148159236600db04c0117.setIcon(icon_6091006f2cf048a99246e8d9e8bbcacf);
+        
+    
+        var popup_68f11d02fd9444f6aa7a6ce6c23cfcf0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c493e4c71ba44912add72a9bfac563d9 = $(`<div id="html_c493e4c71ba44912add72a9bfac563d9" style="width: 100.0%; height: 100.0%;">taxi ride costed 19.30 dollars</div>`)[0];
+            popup_68f11d02fd9444f6aa7a6ce6c23cfcf0.setContent(html_c493e4c71ba44912add72a9bfac563d9);
+        
+
+        marker_6ecee45df9c148159236600db04c0117.bindPopup(popup_68f11d02fd9444f6aa7a6ce6c23cfcf0)
+        ;
+
+        
+    
+    
+            marker_6ecee45df9c148159236600db04c0117.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d1481027f354ce9884530b972c4f6b4 = L.marker(
+                [40.719547271728516, -73.84283447265625],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_233d09424d8d469492b801664ec80def = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1700e8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_6d1481027f354ce9884530b972c4f6b4.setIcon(icon_233d09424d8d469492b801664ec80def);
+        
+    
+        var popup_835f5e7ce2784d9bbbcc5ec58142926f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dd2629a2ff64496992c21a8832e15108 = $(`<div id="html_dd2629a2ff64496992c21a8832e15108" style="width: 100.0%; height: 100.0%;">taxi ride costed 8.30 dollars</div>`)[0];
+            popup_835f5e7ce2784d9bbbcc5ec58142926f.setContent(html_dd2629a2ff64496992c21a8832e15108);
+        
+
+        marker_6d1481027f354ce9884530b972c4f6b4.bindPopup(popup_835f5e7ce2784d9bbbcc5ec58142926f)
+        ;
+
+        
+    
+    
+            marker_6d1481027f354ce9884530b972c4f6b4.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_533a6caed53f46fc8abc86a3ea78ea24 = L.marker(
+                [40.71892166137695, -73.84186553955078],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_c898b24a2faf417795dc43900ce32bd4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1200edff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_533a6caed53f46fc8abc86a3ea78ea24.setIcon(icon_c898b24a2faf417795dc43900ce32bd4);
+        
+    
+        var popup_2bdd0827ca0f4411b66cb4823756177d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_34779680ccb34ac88e0dee65108c5c1e = $(`<div id="html_34779680ccb34ac88e0dee65108c5c1e" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.30 dollars</div>`)[0];
+            popup_2bdd0827ca0f4411b66cb4823756177d.setContent(html_34779680ccb34ac88e0dee65108c5c1e);
+        
+
+        marker_533a6caed53f46fc8abc86a3ea78ea24.bindPopup(popup_2bdd0827ca0f4411b66cb4823756177d)
+        ;
+
+        
+    
+    
+            marker_533a6caed53f46fc8abc86a3ea78ea24.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c9ccee9bb3f4e9aa43958c640ef767b = L.marker(
+                [40.719154357910156, -73.84230041503906],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_4f6d5533970a40d5aaa6c4811f2048b4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#4800b7ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_3c9ccee9bb3f4e9aa43958c640ef767b.setIcon(icon_4f6d5533970a40d5aaa6c4811f2048b4);
+        
+    
+        var popup_f60b3220aa654963b78979d602769c87 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a765cc3e6c8146d582b3e2814882524a = $(`<div id="html_a765cc3e6c8146d582b3e2814882524a" style="width: 100.0%; height: 100.0%;">taxi ride costed 17.80 dollars</div>`)[0];
+            popup_f60b3220aa654963b78979d602769c87.setContent(html_a765cc3e6c8146d582b3e2814882524a);
+        
+
+        marker_3c9ccee9bb3f4e9aa43958c640ef767b.bindPopup(popup_f60b3220aa654963b78979d602769c87)
+        ;
+
+        
+    
+    
+            marker_3c9ccee9bb3f4e9aa43958c640ef767b.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_579f88a4df58484e91b0497024374bd1 = L.marker(
+                [40.71963882446289, -73.843017578125],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_414670e4c1f343c49a8cdf0b3f724d21 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1200edff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_579f88a4df58484e91b0497024374bd1.setIcon(icon_414670e4c1f343c49a8cdf0b3f724d21);
+        
+    
+        var popup_b1a35f39262e41df95bae4d85619172a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3ff01cae05064c8faff2211affb6c4c9 = $(`<div id="html_3ff01cae05064c8faff2211affb6c4c9" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.40 dollars</div>`)[0];
+            popup_b1a35f39262e41df95bae4d85619172a.setContent(html_3ff01cae05064c8faff2211affb6c4c9);
+        
+
+        marker_579f88a4df58484e91b0497024374bd1.bindPopup(popup_b1a35f39262e41df95bae4d85619172a)
+        ;
+
+        
+    
+    
+            marker_579f88a4df58484e91b0497024374bd1.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_db650696c2aa4594ad8f37fd1ae88f28 = L.marker(
+                [40.718353271484375, -73.84246063232422],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b7e2c218ac624b429e8d1b2a3a0bdbb9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1000efff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_db650696c2aa4594ad8f37fd1ae88f28.setIcon(icon_b7e2c218ac624b429e8d1b2a3a0bdbb9);
+        
+    
+        var popup_a9069d233c0149adbc1c30ab49588ee1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_32d05f992ed647f093d341cb5bc171fe = $(`<div id="html_32d05f992ed647f093d341cb5bc171fe" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.95 dollars</div>`)[0];
+            popup_a9069d233c0149adbc1c30ab49588ee1.setContent(html_32d05f992ed647f093d341cb5bc171fe);
+        
+
+        marker_db650696c2aa4594ad8f37fd1ae88f28.bindPopup(popup_a9069d233c0149adbc1c30ab49588ee1)
+        ;
+
+        
+    
+    
+            marker_db650696c2aa4594ad8f37fd1ae88f28.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e0b64534181c409595e5a5df1468c84e = L.marker(
+                [40.7193717956543, -73.84257507324219],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_912b9b454bfa4be9814c85384b394236 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#1200edff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_e0b64534181c409595e5a5df1468c84e.setIcon(icon_912b9b454bfa4be9814c85384b394236);
+        
+    
+        var popup_52562a1d3c3844b7a45f591428e629d6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_559714e20a1b4c19b3feb8a86e31a2db = $(`<div id="html_559714e20a1b4c19b3feb8a86e31a2db" style="width: 100.0%; height: 100.0%;">taxi ride costed 7.30 dollars</div>`)[0];
+            popup_52562a1d3c3844b7a45f591428e629d6.setContent(html_559714e20a1b4c19b3feb8a86e31a2db);
+        
+
+        marker_e0b64534181c409595e5a5df1468c84e.bindPopup(popup_52562a1d3c3844b7a45f591428e629d6)
+        ;
+
+        
+    
+    
+            marker_e0b64534181c409595e5a5df1468c84e.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f01a327b49a541a7aa95203265d1b3b1 = L.marker(
+                [40.71931457519531, -73.84249877929688],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_4cb8a88da1ac4dbcac8c1ee3696a76e7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#0f00f0ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_f01a327b49a541a7aa95203265d1b3b1.setIcon(icon_4cb8a88da1ac4dbcac8c1ee3696a76e7);
+        
+    
+        var popup_45eb6441a5a0446795e5fae7f526a11b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_52522d9c49f64c67b1dc2123a17641f2 = $(`<div id="html_52522d9c49f64c67b1dc2123a17641f2" style="width: 100.0%; height: 100.0%;">taxi ride costed 6.80 dollars</div>`)[0];
+            popup_45eb6441a5a0446795e5fae7f526a11b.setContent(html_52522d9c49f64c67b1dc2123a17641f2);
+        
+
+        marker_f01a327b49a541a7aa95203265d1b3b1.bindPopup(popup_45eb6441a5a0446795e5fae7f526a11b)
+        ;
+
+        
+    
+    
+            marker_f01a327b49a541a7aa95203265d1b3b1.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d414824be847420e93f3ec32f2a4bf3e = L.marker(
+                [40.71910858154297, -73.84217834472656],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_b62723fc4e2c4fbf9ffae3c733f2ed0d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#6a0095ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_d414824be847420e93f3ec32f2a4bf3e.setIcon(icon_b62723fc4e2c4fbf9ffae3c733f2ed0d);
+        
+    
+        var popup_4fa2b4e90018429bb098288016bb4776 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_66d0f64be07641ea8122480fcc769500 = $(`<div id="html_66d0f64be07641ea8122480fcc769500" style="width: 100.0%; height: 100.0%;">taxi ride costed 24.30 dollars</div>`)[0];
+            popup_4fa2b4e90018429bb098288016bb4776.setContent(html_66d0f64be07641ea8122480fcc769500);
+        
+
+        marker_d414824be847420e93f3ec32f2a4bf3e.bindPopup(popup_4fa2b4e90018429bb098288016bb4776)
+        ;
+
+        
+    
+    
+            marker_d414824be847420e93f3ec32f2a4bf3e.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_142b81fd5fbf4bf183a0676ebe886060 = L.marker(
+                [40.71941375732422, -73.84295654296875],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_3b495435a47347af81ee841a844d72f3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#860079ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_142b81fd5fbf4bf183a0676ebe886060.setIcon(icon_3b495435a47347af81ee841a844d72f3);
+        
+    
+        var popup_becd9dfb665f4740ad96cabbea30b427 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c2a92bb3d6b844d58e229c239181a891 = $(`<div id="html_c2a92bb3d6b844d58e229c239181a891" style="width: 100.0%; height: 100.0%;">taxi ride costed 29.75 dollars</div>`)[0];
+            popup_becd9dfb665f4740ad96cabbea30b427.setContent(html_c2a92bb3d6b844d58e229c239181a891);
+        
+
+        marker_142b81fd5fbf4bf183a0676ebe886060.bindPopup(popup_becd9dfb665f4740ad96cabbea30b427)
+        ;
+
+        
+    
+    
+            marker_142b81fd5fbf4bf183a0676ebe886060.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_66f0cbf8876a401d9efa70bdd11ba407 = L.marker(
+                [40.719505310058594, -73.8430404663086],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_e9ee38829e8243a0885fb92713ea2750 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#5700a8ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_66f0cbf8876a401d9efa70bdd11ba407.setIcon(icon_e9ee38829e8243a0885fb92713ea2750);
+        
+    
+        var popup_030a387299364e00bf1fbf382087f67a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a384521d2f644e498acceaacc505acfe = $(`<div id="html_a384521d2f644e498acceaacc505acfe" style="width: 100.0%; height: 100.0%;">taxi ride costed 20.60 dollars</div>`)[0];
+            popup_030a387299364e00bf1fbf382087f67a.setContent(html_a384521d2f644e498acceaacc505acfe);
+        
+
+        marker_66f0cbf8876a401d9efa70bdd11ba407.bindPopup(popup_030a387299364e00bf1fbf382087f67a)
+        ;
+
+        
+    
+    
+            marker_66f0cbf8876a401d9efa70bdd11ba407.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a2cc1e1a86c046dbb1a2b92aa0a81987 = L.marker(
+                [40.719451904296875, -73.84329986572266],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_5c57085be8af4cd88b7d9a05d4811cbd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#5300acff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_a2cc1e1a86c046dbb1a2b92aa0a81987.setIcon(icon_5c57085be8af4cd88b7d9a05d4811cbd);
+        
+    
+        var popup_b83ec20e635a48a284d80e4edf708a32 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0c655f24176a4703895397889aeabb18 = $(`<div id="html_0c655f24176a4703895397889aeabb18" style="width: 100.0%; height: 100.0%;">taxi ride costed 19.80 dollars</div>`)[0];
+            popup_b83ec20e635a48a284d80e4edf708a32.setContent(html_0c655f24176a4703895397889aeabb18);
+        
+
+        marker_a2cc1e1a86c046dbb1a2b92aa0a81987.bindPopup(popup_b83ec20e635a48a284d80e4edf708a32)
+        ;
+
+        
+    
+    
+            marker_a2cc1e1a86c046dbb1a2b92aa0a81987.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c32d1640d3b54cb6a1aa2eedf012ac50 = L.marker(
+                [40.71902084350586, -73.84400939941406],
+                {}
+            ).addTo(map_566322dc8d5a42ae8782e25298f88f40);
+        
+    
+            var icon_81413d5501c7405bac3903cec8927e08 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "#4e00b1ff", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_c32d1640d3b54cb6a1aa2eedf012ac50.setIcon(icon_81413d5501c7405bac3903cec8927e08);
+        
+    
+        var popup_238daa0829f04080a4681e63090a83c7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_854620a3063a4e0c913225d354dbaa33 = $(`<div id="html_854620a3063a4e0c913225d354dbaa33" style="width: 100.0%; height: 100.0%;">taxi ride costed 18.82 dollars</div>`)[0];
+            popup_238daa0829f04080a4681e63090a83c7.setContent(html_854620a3063a4e0c913225d354dbaa33);
+        
+
+        marker_c32d1640d3b54cb6a1aa2eedf012ac50.bindPopup(popup_238daa0829f04080a4681e63090a83c7)
+        ;
+
+        
+    
+    
+            marker_c32d1640d3b54cb6a1aa2eedf012ac50.bindTooltip(
+                `<div>
+                     pickup point taxi
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+    var color_map_0b3d03458cf2409ca67cc9935618f78b = {};
+
+    
+    color_map_0b3d03458cf2409ca67cc9935618f78b.color = d3.scale.threshold()
+              .domain([3.8, 3.8987775551102204, 3.9975551102204405, 4.096332665330661, 4.195110220440881, 4.293887775551102, 4.392665330661322, 4.4914428857715425, 4.5902204408817635, 4.688997995991984, 4.787775551102205, 4.886553106212425, 4.985330661322645, 5.084108216432866, 5.182885771543086, 5.281663326653307, 5.380440881763527, 5.479218436873747, 5.577995991983968, 5.6767735470941885, 5.775551102204409, 5.87432865731463, 5.97310621242485, 6.07188376753507, 6.170661322645291, 6.269438877755512, 6.368216432865731, 6.466993987975952, 6.565771543086172, 6.664549098196392, 6.763326653306613, 6.862104208416834, 6.960881763527054, 7.059659318637275, 7.158436873747496, 7.257214428857716, 7.355991983967936, 7.454769539078157, 7.553547094188377, 7.652324649298597, 7.751102204408818, 7.849879759519038, 7.9486573146292585, 8.04743486973948, 8.1462124248497, 8.24498997995992, 8.34376753507014, 8.44254509018036, 8.541322645290581, 8.640100200400802, 8.738877755511023, 8.837655310621244, 8.936432865731463, 9.035210420841683, 9.133987975951904, 9.232765531062125, 9.331543086172346, 9.430320641282567, 9.529098196392786, 9.627875751503007, 9.726653306613226, 9.825430861723447, 9.924208416833668, 10.02298597194389, 10.121763527054108, 10.22054108216433, 10.319318637274549, 10.41809619238477, 10.51687374749499, 10.615651302605212, 10.714428857715433, 10.813206412825652, 10.911983967935873, 11.010761523046092, 11.109539078156313, 11.208316633266534, 11.307094188376755, 11.405871743486975, 11.504649298597194, 11.603426853707415, 11.702204408817636, 11.800981963927857, 11.899759519038078, 11.998537074148299, 12.097314629258516, 12.196092184368737, 12.294869739478958, 12.39364729458918, 12.4924248496994, 12.591202404809621, 12.689979959919839, 12.78875751503006, 12.88753507014028, 12.986312625250502, 13.085090180360723, 13.18386773547094, 13.282645290581161, 13.381422845691386, 13.480200400801603, 13.578977955911824, 13.677755511022045, 13.776533066132266, 13.875310621242487, 13.974088176352709, 14.072865731462926, 14.171643286573147, 14.270420841683368, 14.369198396793589, 14.46797595190381, 14.566753507014027, 14.665531062124249, 14.76430861723447, 14.86308617234469, 14.961863727454912, 15.060641282565133, 15.15941883767535, 15.258196392785571, 15.356973947895792, 15.455751503006013, 15.554529058116234, 15.653306613226455, 15.752084168336676, 15.850861723446897, 15.949639278557115, 16.048416833667336, 16.147194388777557, 16.245971943887778, 16.344749498998, 16.443527054108216, 16.542304609218437, 16.641082164328658, 16.73985971943888, 16.8386372745491, 16.93741482965932, 17.03619238476954, 17.13496993987976, 17.23374749498998, 17.3325250501002, 17.431302605210423, 17.530080160320644, 17.628857715430865, 17.727635270541086, 17.826412825651303, 17.925190380761524, 18.023967935871745, 18.122745490981966, 18.221523046092187, 18.32030060120241, 18.419078156312626, 18.517855711422847, 18.616633266533068, 18.71541082164329, 18.81418837675351, 18.912965931863727, 19.01174348697395, 19.11052104208417, 19.20929859719439, 19.30807615230461, 19.406853707414832, 19.50563126252505, 19.604408817635274, 19.703186372745492, 19.801963927855716, 19.900741482965934, 19.999519038076155, 20.098296593186376, 20.197074148296597, 20.295851703406814, 20.394629258517035, 20.493406813627256, 20.592184368737477, 20.6909619238477, 20.78973947895792, 20.88851703406814, 20.987294589178358, 21.086072144288583, 21.1848496993988, 21.28362725450902, 21.382404809619242, 21.481182364729463, 21.57995991983968, 21.678737474949905, 21.777515030060123, 21.876292585170344, 21.975070140280565, 22.073847695390786, 22.172625250501003, 22.271402805611228, 22.370180360721445, 22.468957915831666, 22.567735470941884, 22.666513026052108, 22.765290581162326, 22.864068136272547, 22.96284569138277, 23.06162324649299, 23.16040080160321, 23.25917835671343, 23.35795591182365, 23.45673346693387, 23.555511022044094, 23.65428857715431, 23.753066132264532, 23.851843687374753, 23.950621242484974, 24.04939879759519, 24.148176352705416, 24.246953907815634, 24.345731462925855, 24.444509018036076, 24.543286573146297, 24.642064128256514, 24.740841683366735, 24.839619238476956, 24.938396793587177, 25.0371743486974, 25.13595190380762, 25.23472945891784, 25.333507014028058, 25.432284569138282, 25.5310621242485, 25.62983967935872, 25.728617234468942, 25.827394789579163, 25.92617234468938, 26.024949899799605, 26.123727454909822, 26.222505010020043, 26.321282565130264, 26.420060120240485, 26.518837675350703, 26.617615230460927, 26.716392785571145, 26.815170340681366, 26.913947895791583, 27.012725450901808, 27.11150300601203, 27.210280561122246, 27.30905811623247, 27.40783567134269, 27.50661322645291, 27.60539078156313, 27.70416833667335, 27.80294589178357, 27.901723446893794, 28.00050100200401, 28.099278557114232, 28.198056112224453, 28.296833667334674, 28.39561122244489, 28.494388777555116, 28.593166332665334, 28.691943887775555, 28.790721442885776, 28.889498997995997, 28.988276553106214, 29.087054108216435, 29.18583166332666, 29.284609218436877, 29.383386773547098, 29.48216432865732, 29.58094188376754, 29.679719438877758, 29.778496993987982, 29.8772745490982, 29.97605210420842, 30.07482965931864, 30.173607214428863, 30.27238476953908, 30.371162324649305, 30.469939879759522, 30.568717434869743, 30.667494989979964, 30.766272545090185, 30.865050100200403, 30.963827655310627, 31.062605210420845, 31.161382765531066, 31.260160320641287, 31.358937875751508, 31.45771543086173, 31.556492985971946, 31.65527054108217, 31.75404809619239, 31.85282565130261, 31.95160320641283, 32.05038076152305, 32.14915831663327, 32.24793587174349, 32.34671342685371, 32.44549098196393, 32.54426853707415, 32.64304609218437, 32.74182364729459, 32.84060120240481, 32.93937875751503, 33.038156312625254, 33.13693386773547, 33.2357114228457, 33.334488977955914, 33.43326653306613, 33.532044088176356, 33.63082164328657, 33.7295991983968, 33.828376753507015, 33.92715430861724, 34.02593186372746, 34.12470941883768, 34.2234869739479, 34.32226452905812, 34.42104208416834, 34.51981963927856, 34.61859719438878, 34.717374749499, 34.81615230460922, 34.91492985971944, 35.01370741482966, 35.112484969939885, 35.2112625250501, 35.31004008016033, 35.408817635270545, 35.50759519038076, 35.60637274549099, 35.705150300601204, 35.80392785571143, 35.902705410821646, 36.001482965931864, 36.10026052104209, 36.199038076152306, 36.29781563126252, 36.39659318637275, 36.495370741482965, 36.59414829659319, 36.69292585170341, 36.791703406813625, 36.89048096192385, 36.98925851703407, 37.08803607214429, 37.18681362725451, 37.285591182364726, 37.38436873747495, 37.483146292585175, 37.58192384769539, 37.68070140280561, 37.779478957915835, 37.87825651302605, 37.97703406813628, 38.075811623246494, 38.17458917835671, 38.273366733466936, 38.37214428857716, 38.47092184368737, 38.569699398797596, 38.66847695390782, 38.76725450901804, 38.866032064128255, 38.96480961923848, 39.0635871743487, 39.16236472945892, 39.26114228456914, 39.35991983967936, 39.45869739478958, 39.557474949899806, 39.65625250501002, 39.75503006012024, 39.853807615230465, 39.95258517034068, 40.05136272545091, 40.150140280561125, 40.24891783567134, 40.34769539078157, 40.44647294589179, 40.545250501002, 40.64402805611223, 40.74280561122245, 40.84158316633267, 40.940360721442886, 41.0391382765531, 41.13791583166333, 41.23669338677355, 41.33547094188376, 41.43424849699399, 41.53302605210421, 41.63180360721443, 41.73058116232465, 41.82935871743487, 41.92813627254509, 42.026913827655314, 42.12569138276554, 42.22446893787575, 42.32324649298597, 42.4220240480962, 42.520801603206415, 42.61957915831663, 42.71835671342686, 42.817134268537075, 42.9159118236473, 43.01468937875752, 43.113466933867734, 43.21224448897796, 43.31102204408818, 43.409799599198394, 43.50857715430862, 43.60735470941884, 43.70613226452906, 43.80490981963928, 43.9036873747495, 44.00246492985972, 44.101242484969944, 44.20002004008017, 44.29879759519038, 44.397575150300604, 44.49635270541083, 44.595130260521046, 44.69390781563126, 44.79268537074149, 44.891462925851705, 44.99024048096193, 45.08901803607215, 45.187795591182365, 45.28657314629259, 45.38535070140281, 45.484128256513024, 45.58290581162325, 45.681683366733466, 45.78046092184369, 45.87923847695391, 45.978016032064126, 46.07679358717435, 46.175571142284575, 46.27434869739479, 46.37312625250501, 46.471903807615234, 46.57068136272545, 46.66945891783568, 46.768236472945894, 46.86701402805611, 46.965791583166336, 47.06456913827656, 47.16334669338677, 47.262124248496995, 47.36090180360722, 47.45967935871744, 47.558456913827655, 47.65723446893788, 47.7560120240481, 47.85478957915832, 47.95356713426854, 48.05234468937876, 48.15112224448898, 48.249899799599206, 48.34867735470942, 48.44745490981964, 48.546232464929865, 48.64501002004008, 48.74378757515031, 48.842565130260525, 48.94134268537074, 49.04012024048097, 49.13889779559119, 49.2376753507014, 49.336452905811626, 49.43523046092185, 49.53400801603207, 49.632785571142286, 49.7315631262525, 49.83034068136273, 49.92911823647295, 50.02789579158316, 50.12667334669339, 50.22545090180361, 50.32422845691383, 50.423006012024054, 50.52178356713427, 50.62056112224449, 50.71933867735471, 50.81811623246494, 50.91689378757515, 51.01567134268537, 51.1144488977956, 51.213226452905815, 51.31200400801603, 51.41078156312626, 51.509559118236474, 51.6083366733467, 51.707114228456916, 51.805891783567134, 51.90466933867736, 52.00344689378758, 52.10222444889779, 52.20100200400802, 52.29977955911824, 52.39855711422846, 52.497334669338684, 52.5961122244489, 52.69488977955912, 52.793667334669344, 52.89244488977957, 52.99122244488978, 53.09])
+              .range(['#0000ffff', '#0000ffff', '#0100feff', '#0100feff', '#0200fdff', '#0200fdff', '#0300fcff', '#0300fcff', '#0400fbff', '#0400fbff', '#0500faff', '#0500faff', '#0600f9ff', '#0600f9ff', '#0700f8ff', '#0700f8ff', '#0800f7ff', '#0800f7ff', '#0900f6ff', '#0900f6ff', '#0a00f5ff', '#0a00f5ff', '#0b00f4ff', '#0b00f4ff', '#0c00f3ff', '#0c00f3ff', '#0d00f2ff', '#0d00f2ff', '#0e00f1ff', '#0e00f1ff', '#0f00f0ff', '#0f00f0ff', '#1000efff', '#1000efff', '#1100eeff', '#1100eeff', '#1200edff', '#1200edff', '#1300ecff', '#1400ebff', '#1400ebff', '#1500eaff', '#1500eaff', '#1600e9ff', '#1600e9ff', '#1700e8ff', '#1700e8ff', '#1800e7ff', '#1800e7ff', '#1900e6ff', '#1900e6ff', '#1a00e5ff', '#1a00e5ff', '#1b00e4ff', '#1b00e4ff', '#1c00e3ff', '#1c00e3ff', '#1d00e2ff', '#1d00e2ff', '#1e00e1ff', '#1e00e1ff', '#1f00e0ff', '#1f00e0ff', '#2000dfff', '#2000dfff', '#2100deff', '#2100deff', '#2200ddff', '#2200ddff', '#2300dcff', '#2300dcff', '#2400dbff', '#2400dbff', '#2500daff', '#2500daff', '#2600d9ff', '#2600d9ff', '#2700d8ff', '#2800d7ff', '#2800d7ff', '#2900d6ff', '#2900d6ff', '#2a00d5ff', '#2a00d5ff', '#2b00d4ff', '#2b00d4ff', '#2c00d3ff', '#2c00d3ff', '#2d00d2ff', '#2d00d2ff', '#2e00d1ff', '#2e00d1ff', '#2f00d0ff', '#2f00d0ff', '#3000cfff', '#3000cfff', '#3100ceff', '#3100ceff', '#3200cdff', '#3200cdff', '#3300ccff', '#3300ccff', '#3400cbff', '#3400cbff', '#3500caff', '#3500caff', '#3600c9ff', '#3600c9ff', '#3700c8ff', '#3700c8ff', '#3800c7ff', '#3800c7ff', '#3900c6ff', '#3900c6ff', '#3a00c5ff', '#3a00c5ff', '#3b00c4ff', '#3c00c3ff', '#3c00c3ff', '#3d00c2ff', '#3d00c2ff', '#3e00c1ff', '#3e00c1ff', '#3f00c0ff', '#3f00c0ff', '#4000bfff', '#4000bfff', '#4100beff', '#4100beff', '#4200bdff', '#4200bdff', '#4300bcff', '#4300bcff', '#4400bbff', '#4400bbff', '#4500baff', '#4500baff', '#4600b9ff', '#4600b9ff', '#4700b8ff', '#4700b8ff', '#4800b7ff', '#4800b7ff', '#4900b6ff', '#4900b6ff', '#4a00b5ff', '#4a00b5ff', '#4b00b4ff', '#4b00b4ff', '#4c00b3ff', '#4c00b3ff', '#4d00b2ff', '#4d00b2ff', '#4e00b1ff', '#4f00b0ff', '#4f00b0ff', '#5000afff', '#5000afff', '#5100aeff', '#5100aeff', '#5200adff', '#5200adff', '#5300acff', '#5300acff', '#5400abff', '#5400abff', '#5500aaff', '#5500aaff', '#5600a9ff', '#5600a9ff', '#5700a8ff', '#5700a8ff', '#5800a7ff', '#5800a7ff', '#5900a6ff', '#5900a6ff', '#5a00a5ff', '#5a00a5ff', '#5b00a4ff', '#5b00a4ff', '#5c00a3ff', '#5c00a3ff', '#5d00a2ff', '#5d00a2ff', '#5e00a1ff', '#5e00a1ff', '#5f00a0ff', '#5f00a0ff', '#60009fff', '#60009fff', '#61009eff', '#61009eff', '#62009dff', '#63009cff', '#63009cff', '#64009bff', '#64009bff', '#65009aff', '#65009aff', '#660099ff', '#660099ff', '#670098ff', '#670098ff', '#680097ff', '#680097ff', '#690096ff', '#690096ff', '#6a0095ff', '#6a0095ff', '#6b0094ff', '#6b0094ff', '#6c0093ff', '#6c0093ff', '#6d0092ff', '#6d0092ff', '#6e0091ff', '#6e0091ff', '#6f0090ff', '#6f0090ff', '#70008fff', '#70008fff', '#71008eff', '#71008eff', '#72008dff', '#72008dff', '#73008cff', '#73008cff', '#74008bff', '#74008bff', '#75008aff', '#75008aff', '#760089ff', '#770088ff', '#770088ff', '#780087ff', '#780087ff', '#790086ff', '#790086ff', '#7a0085ff', '#7a0085ff', '#7b0084ff', '#7b0084ff', '#7c0083ff', '#7c0083ff', '#7d0082ff', '#7d0082ff', '#7e0081ff', '#7e0081ff', '#7f0080ff', '#7f0080ff', '#80007fff', '#80007fff', '#81007eff', '#81007eff', '#82007dff', '#82007dff', '#83007cff', '#83007cff', '#84007bff', '#84007bff', '#85007aff', '#85007aff', '#860079ff', '#860079ff', '#870078ff', '#870078ff', '#880077ff', '#880077ff', '#890076ff', '#8a0075ff', '#8a0075ff', '#8b0074ff', '#8b0074ff', '#8c0073ff', '#8c0073ff', '#8d0072ff', '#8d0072ff', '#8e0071ff', '#8e0071ff', '#8f0070ff', '#8f0070ff', '#90006fff', '#90006fff', '#91006eff', '#91006eff', '#92006dff', '#92006dff', '#93006cff', '#93006cff', '#94006bff', '#94006bff', '#95006aff', '#95006aff', '#960069ff', '#960069ff', '#970068ff', '#970068ff', '#980067ff', '#980067ff', '#990066ff', '#990066ff', '#9a0065ff', '#9a0065ff', '#9b0064ff', '#9b0064ff', '#9c0063ff', '#9c0063ff', '#9d0062ff', '#9e0061ff', '#9e0061ff', '#9f0060ff', '#9f0060ff', '#a0005fff', '#a0005fff', '#a1005eff', '#a1005eff', '#a2005dff', '#a2005dff', '#a3005cff', '#a3005cff', '#a4005bff', '#a4005bff', '#a5005aff', '#a5005aff', '#a60059ff', '#a60059ff', '#a70058ff', '#a70058ff', '#a80057ff', '#a80057ff', '#a90056ff', '#a90056ff', '#aa0055ff', '#aa0055ff', '#ab0054ff', '#ab0054ff', '#ac0053ff', '#ac0053ff', '#ad0052ff', '#ad0052ff', '#ae0051ff', '#ae0051ff', '#af0050ff', '#af0050ff', '#b0004fff', '#b0004fff', '#b1004eff', '#b2004dff', '#b2004dff', '#b3004cff', '#b3004cff', '#b4004bff', '#b4004bff', '#b5004aff', '#b5004aff', '#b60049ff', '#b60049ff', '#b70048ff', '#b70048ff', '#b80047ff', '#b80047ff', '#b90046ff', '#b90046ff', '#ba0045ff', '#ba0045ff', '#bb0044ff', '#bb0044ff', '#bc0043ff', '#bc0043ff', '#bd0042ff', '#bd0042ff', '#be0041ff', '#be0041ff', '#bf0040ff', '#bf0040ff', '#c0003fff', '#c0003fff', '#c1003eff', '#c1003eff', '#c2003dff', '#c2003dff', '#c3003cff', '#c3003cff', '#c4003bff', '#c5003aff', '#c5003aff', '#c60039ff', '#c60039ff', '#c70038ff', '#c70038ff', '#c80037ff', '#c80037ff', '#c90036ff', '#c90036ff', '#ca0035ff', '#ca0035ff', '#cb0034ff', '#cb0034ff', '#cc0033ff', '#cc0033ff', '#cd0032ff', '#cd0032ff', '#ce0031ff', '#ce0031ff', '#cf0030ff', '#cf0030ff', '#d0002fff', '#d0002fff', '#d1002eff', '#d1002eff', '#d2002dff', '#d2002dff', '#d3002cff', '#d3002cff', '#d4002bff', '#d4002bff', '#d5002aff', '#d5002aff', '#d60029ff', '#d60029ff', '#d70028ff', '#d70028ff', '#d80027ff', '#d90026ff', '#d90026ff', '#da0025ff', '#da0025ff', '#db0024ff', '#db0024ff', '#dc0023ff', '#dc0023ff', '#dd0022ff', '#dd0022ff', '#de0021ff', '#de0021ff', '#df0020ff', '#df0020ff', '#e0001fff', '#e0001fff', '#e1001eff', '#e1001eff', '#e2001dff', '#e2001dff', '#e3001cff', '#e3001cff', '#e4001bff', '#e4001bff', '#e5001aff', '#e5001aff', '#e60019ff', '#e60019ff', '#e70018ff', '#e70018ff', '#e80017ff', '#e80017ff', '#e90016ff', '#e90016ff', '#ea0015ff', '#ea0015ff', '#eb0014ff', '#eb0014ff', '#ec0013ff', '#ed0012ff', '#ed0012ff', '#ee0011ff', '#ee0011ff', '#ef0010ff', '#ef0010ff', '#f0000fff', '#f0000fff', '#f1000eff', '#f1000eff', '#f2000dff', '#f2000dff', '#f3000cff', '#f3000cff', '#f4000bff', '#f4000bff', '#f5000aff', '#f5000aff', '#f60009ff', '#f60009ff', '#f70008ff', '#f70008ff', '#f80007ff', '#f80007ff', '#f90006ff', '#f90006ff', '#fa0005ff', '#fa0005ff', '#fb0004ff', '#fb0004ff', '#fc0003ff', '#fc0003ff', '#fd0002ff', '#fd0002ff', '#fe0001ff', '#fe0001ff', '#ff0000ff', '#ff0000ff']);
+    
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.x = d3.scale.linear()
+              .domain([3.8, 53.09])
+              .range([0, 400]);
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.legend = L.control({position: 'topright'});
+    color_map_0b3d03458cf2409ca67cc9935618f78b.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_0b3d03458cf2409ca67cc9935618f78b.legend.addTo(map_566322dc8d5a42ae8782e25298f88f40);
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.xAxis = d3.svg.axis()
+        .scale(color_map_0b3d03458cf2409ca67cc9935618f78b.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([3.8, 53.09]);
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.g = color_map_0b3d03458cf2409ca67cc9935618f78b.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.g.selectAll("rect")
+        .data(color_map_0b3d03458cf2409ca67cc9935618f78b.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_0b3d03458cf2409ca67cc9935618f78b.x(color_map_0b3d03458cf2409ca67cc9935618f78b.color.domain()[i - 1]) : color_map_0b3d03458cf2409ca67cc9935618f78b.x.range()[0],
+            x1: i < color_map_0b3d03458cf2409ca67cc9935618f78b.color.domain().length ? color_map_0b3d03458cf2409ca67cc9935618f78b.x(color_map_0b3d03458cf2409ca67cc9935618f78b.color.domain()[i]) : color_map_0b3d03458cf2409ca67cc9935618f78b.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 10)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_0b3d03458cf2409ca67cc9935618f78b.g.call(color_map_0b3d03458cf2409ca67cc9935618f78b.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text('');
+</script>
