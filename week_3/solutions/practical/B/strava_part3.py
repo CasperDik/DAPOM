@@ -1,5 +1,3 @@
-%reset -f
-
 # This example implements the code for DAPOM practical 3B
 # Wout van Wezel, 2020
 

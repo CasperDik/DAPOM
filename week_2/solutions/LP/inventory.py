@@ -1,5 +1,3 @@
-%reset -f
-
 from gurobipy import Model, GRB, quicksum
 
 D = [0, 80, 100, 120, 140, 90, 140]

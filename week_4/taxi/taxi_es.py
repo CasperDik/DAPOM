@@ -3,6 +3,7 @@ from week_4.loaders import ingest_json_file_into_elastic_index
 import folium
 import time
 import branca.colormap as cm
+from folium import plugins
 
 # http://localhost:9200/taxi/_mapping?pretty
 # http://localhost:9200/taxi/_count
@@ -81,6 +82,8 @@ def plot_cords_as_marker(coords, amount):
     for lat, long, a in zip(lats, longs, amount):
         folium.Marker([lat, long], popup="taxi ride costed {:.2f} dollars".format(a), icon=folium.Icon(color="white", icon_color=colormap(a)), tooltip="pickup point taxi").add_to(m)
 
+    minimap = plugins.MiniMap()
+    m.add_child(minimap)
     m.add_child(colormap)
 
     m.save("taxi_pickup_locations.html")
