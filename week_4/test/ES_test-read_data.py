@@ -2,7 +2,9 @@ from elasticsearch import Elasticsearch
 import json
 
 # tell python were ES can be found
-es = Elasticsearch([{'host': '127.0.0.1', 'port': 9200, 'scheme': 'http'}])
+password = "."
+es = Elasticsearch(hosts="http://elastic:" + password + "@localhost:9200")
+# es = Elasticsearch([{'host': '127.0.0.1', 'port': 9200, 'scheme': 'http'}])
 
 # result = es.get(index="persons", id=2)
 # print(result)

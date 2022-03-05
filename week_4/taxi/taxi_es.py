@@ -70,6 +70,10 @@ def query1(latitude: float, longitude: float):
 
     return coords, amount
 
+def query_sql():
+    amount = es.sql.query(body={"query": "SELECT total_amount FROM taxi WHERE total_amount>10"})
+    print(amount)
+
 def plot_cords_as_marker(coords, amount):
     longs = [l[0] for l in coords]
     lats = [l[1] for l in coords]
@@ -90,10 +94,12 @@ def plot_cords_as_marker(coords, amount):
     print("folium map completed")
 
 if __name__ == '__main__':
-    es = Elasticsearch([{'host': '127.0.0.1', 'port': 9200, 'scheme': 'http'}])
-
+    password = "."
+    es = Elasticsearch(hosts="http://elastic:" + password + "@localhost:9200")
     # es.indices.delete(index='taxi', ignore=[400, 404])
     # load_data("taxi-1000000.json")
 
-    coords, amount = query1(40.71905517578125, -73.84300994873047)
-    plot_cords_as_marker(coords, amount)
+    # coords, amount = query1(40.71905517578125, -73.84300994873047)
+    # plot_cords_as_marker(coords, amount)
+
+    query_sql()
