@@ -13,23 +13,10 @@ def load_data(filename: str):
     tic = time.time()
 
     es.indices.create(index='taxi', ignore=400, mappings={
-        "properties": {
-            "pickup_location": {
-                "type": "geo_point"
-            },
-            "pickup_datetime": {
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss"
-                },
-            "dropoff_location": {
-                "type": "geo_point"
-                },
-            "dropoff_datetime": {
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss"
-            }
-        }
-    }
+        "properties": {"pickup_location": {"type": "geo_point"},
+                       "pickup_datetime": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss"},
+                       "dropoff_location": {"type": "geo_point"},
+                       "dropoff_datetime": {"type": "date", "format": "yyyy-MM-dd HH:mm:ss"}}}
                       )
 
     ingest_json_file_into_elastic_index(json_file_name=filename, elastic_client=es, index_name="taxi")
