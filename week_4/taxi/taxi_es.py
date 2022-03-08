@@ -1,5 +1,5 @@
 from elasticsearch import Elasticsearch
-from week_4.loaders import ingest_json_file_into_elastic_index
+from loaders import ingest_json_file_into_elastic_index
 import folium
 import time
 import branca.colormap as cm
