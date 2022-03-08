@@ -26,7 +26,7 @@ search_body_total_amount_per_day = {
            },
             "aggs": {
                 "total_amount_pd": {
-                    "sum": {"field": "total_amount"},
+                    "stats": {"field": "total_amount"},
                     }
                 }
             }
@@ -34,9 +34,17 @@ search_body_total_amount_per_day = {
     }
 
 
-
+# todo: fix this query
 search_body_total_amount_per_day_with_filter = {
     "size": 0,
+    "query": {
+        "range": {
+            "total_amount": {
+                "gte": 0,
+                "lte:": 9999
+            }
+        }
+    },
     "aggs": {
         "count_per_day": {
            "date_histogram": {
@@ -46,7 +54,7 @@ search_body_total_amount_per_day_with_filter = {
            },
             "aggs": {
                 "total_amount_pd": {
-                    "sum": {"field": "total_amount"},
+                    "stats": {"field": "total_amount"},
                     }
                 }
             }
@@ -54,5 +62,5 @@ search_body_total_amount_per_day_with_filter = {
 
 
 
-result = es.search(index="taxi", body=search_body_total_amount_per_day)
+result = es.search(index="taxi", body=search_body_total_amount_per_day_with_filter)
 print(json.dumps(dict(result), indent=1))

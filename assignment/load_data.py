@@ -1,9 +1,9 @@
 from elasticsearch import Elasticsearch
 import time
-from loaders import ingest_csv_file_into_elastic_index
+from loader import ingest_csv_file_into_elastic_index
 
 
-def load_to_es(elastic_client: Elasticsearch, filename: str, index_name: str, mapping=None):
+def load_to_es(elastic_client: Elasticsearch, filename: str, index_name: str, buffer_size=None, mapping=None):
     """
     Creates a new index in Elasticsearch and uploads the data of a .csv to it. Mapping can be specified but is not
     required.
@@ -14,7 +14,8 @@ def load_to_es(elastic_client: Elasticsearch, filename: str, index_name: str, ma
     elastic_client.indices.create(index=index_name, ignore=400, mappings=mapping)
 
     # load csv in index using loader.py
-    ingest_csv_file_into_elastic_index(csv_file_name=filename, elastic_client=elastic_client, index_name=index_name)
+    ingest_csv_file_into_elastic_index(csv_file_name=filename, elastic_client=elastic_client, index_name=index_name,
+                                       buffer_size=buffer_size)
 
     toc = time.time()
     elapsed_time = toc - tic
@@ -31,15 +32,17 @@ def load_data(password_elasticsearch):
 
     # todo: can adjust mapping if needed
     # http://localhost:9200/assignment_geo_coords/_mapping?pretty
+    # es.indices.put_mapping(index="", body={})
 
     # load geo coords
-    load_to_es(es, filename="input_data/geo_coordinates_per_each_location.csv", index_name="assignment_geo_coords")
+    load_to_es(es, filename="input_data/geo_coordinates_per_each_location.csv", index_name="assignment_geo_coords",
+               buffer_size=5000)
 
     # load forecasts
-    load_to_es(es, filename="input_data/forecasts_2023.csv", index_name="assignment_forecasts23")
+    load_to_es(es, filename="input_data/forecasts_2023.csv", index_name="assignment_forecasts23", buffer_size=15000)
 
     # load distances
-    load_to_es(es, filename="input_data/distances_between_locations.csv",
-               index_name="assignment_distances")
+    load_to_es(es, filename="input_data/distances_between_locations.csv", index_name="assignment_distances",
+               buffer_size=150000)
 
-    es.indices.put_mapping(index="", body={})
+
