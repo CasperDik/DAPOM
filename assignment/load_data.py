@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 import time
-from loader import ingest_csv_file_into_elastic_index
+from loaders.loader import ingest_csv_file_into_elastic_index
 
 
 def load_to_es(elastic_client: Elasticsearch, filename: str, index_name: str, buffer_size=None, mapping=None):
