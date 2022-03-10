@@ -2,7 +2,7 @@ from load_data import load_data
 from visualize_forecasted_deliveries import plot_locations, descriptivestat_forecast
 
 def execute():
-    password_elasticsearch = "."        # remove password before commit
+    password_elasticsearch = "stoepie35"        # remove password before commit
     # load_data(password_elasticsearch)
 
     # plot_locations(password_elasticsearch)

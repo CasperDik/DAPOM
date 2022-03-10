@@ -74,9 +74,13 @@ def descriptivestat_forecast(password_elasticsearch: str):
     avg_d_deliveries_district = forecast_data.groupby(["date", "district"])["cost"].mean()
     print(avg_d_deliveries_district.head())
 
-    # todo: Plot total average deliveries for each district on a bar chart. The graph will have as many bars as the number of districts
+    # compute total average deliveries for each district
     avg_deliveries_district = forecast_data.groupby("district")["cost"].mean()
     print(len(avg_deliveries_district))
+
+    # plot on a bar chart
+    plt.ylim([41, max(avg_deliveries_district)])
+    plt.xticks(rotation='vertical')
     plt.bar(forecast_data["district"].drop_duplicates(), avg_deliveries_district)
     plt.show()
 
