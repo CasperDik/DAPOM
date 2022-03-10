@@ -8,7 +8,6 @@ import calendar
 import os
 import pickle
 import matplotlib.pylab as plt
-# todo: add comments and general description
 
 def plot_locations(password_elasticsearch:  str):
     # only query from elasticsearch when the pickle doesn't exist, if it exists load the file
@@ -32,7 +31,7 @@ def plot_locations(password_elasticsearch:  str):
     for lat, long, a in zip(locations_data["lats"], locations_data["longs"], locations_data["districts"]):
         folium.CircleMarker(location=(lat, long), radius=2, color=color_dict.get(a), popup="district " + a).add_to(m)
 
-    m.save("locations.html")
+    m.save("outputs/locations.html")
 
 def descriptivestat_forecast(password_elasticsearch: str):
     # only query from elasticsearch when the pickle doesn't exist, if it exists load the file
@@ -45,10 +44,10 @@ def descriptivestat_forecast(password_elasticsearch: str):
     # rename columns
     forecast_data = forecast_data.rename(columns={"forecasted year": "year", "cost of the groceries ordered": "cost", "postcode-6-char": "postcode"})
 
-    # costs that to usable float
+    # change costs to usable float
     forecast_data["cost"] = pd.to_numeric(forecast_data["cost"].str[4:], downcast="float")
 
-    # replace months with index of the month
+    # replace months with  numerical index of the month
     months = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8,
               "September": 9, "October": 10, "November": 11, "December": 12}
     forecast_data["month"] = pd.to_numeric(forecast_data['month'].replace(months))
@@ -79,12 +78,14 @@ def descriptivestat_forecast(password_elasticsearch: str):
     print(len(avg_deliveries_district))
 
     # plot on a bar chart
-    plt.ylim([41, max(avg_deliveries_district)])
+    # todo: add (axis) titles
+    plt.ylim([41.5, max(avg_deliveries_district)])
     plt.xticks(rotation='vertical')
     plt.bar(forecast_data["district"].drop_duplicates(), avg_deliveries_district)
     plt.show()
 
-    print("x")
+    plt.savefig("outputs/bar_plot_deliveries.png")
+
 
 
 
