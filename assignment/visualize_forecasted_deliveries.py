@@ -2,9 +2,7 @@ import folium
 from es_queries import query_all_entries
 from mycolorpy import colorlist as mcp
 import pandas as pd
-from datetime import date
 import holidays
-import calendar
 import os
 import pickle
 import matplotlib.pylab as plt
@@ -42,6 +40,7 @@ def plot_locations(password_elasticsearch:  str):
 def descriptivestat_forecast(password_elasticsearch: str):
     """compute and plot descriptive statistics for the forecast data retrieved from elasticsearch"""
     # todo: can also do this directly via elasticsearch? if time
+    # need total deliveries(count) per district --> then divide by 365
 
     # only query from elasticsearch when the pickle file doesn't exist, if it exists load the pickle file
     if os.path.isfile("pickles/assignment_forecasts23.p"):
