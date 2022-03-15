@@ -1,55 +1,89 @@
 from gurobipy import Model, GRB, quicksum
 from itertools import product
 import numpy as np
+import pandas as pd
 
 
 def demand():
-    # demand drops with 5% for 1 min cycling
-    # todo: check lecture recordings
-    demand_pickup = 0.35 - 0.05 / 60 * travel_time_on_bike_in_seconds
-    return W
-m = Model("Locker optimization")
+    """sth.."""
+    # todo: make better solution --> check recordings
 
-# todo: import D, W
+    # todo: import actual travel times
+    df = pd.read_excel("mock_data_weights.xlsx").to_numpy()
 
-n = 10 # todo: len(D) is W symmetric then true otherwise check both len of i and j
-W = np.random.rand(n, n) # W = demand()
-D = np.random.rand(n)
-P = 0.25
-C = 24
+    # count elements equal to first element --> basically counting duplicates
+    # also counts in second column thus double counting --> 9403RS - 9403RS & 9403RS - 9403RS --> both in list
+    # use for the size of the matrix --> size is number of duplicates + 1
+    # todo: check if these comments make sense?
+    n = int(np.count_nonzero(df == df[0][0])/2+1)
 
-# decision variable
-y = m.addVars(n, vtype=GRB.BINARY, name="y")
+    W = np.zeros((n, n))
+    c = 0
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                W[i, j] = 0.35 - 0.05/60 * df[c, 2]
+                c += 1
 
-ij = list(product(range(n), range(n)))
-X = m.addVars(ij, vtype=GRB.BINARY, name="X")
+    # diagonals should be 0
+    # use numpy arrays
+    # need index for all postcodes
+    # if i==j --> 0,  if i =/= j --> insert travel time between i,j at location i,j in array
+    # from postcode i to postcode j --> insert traval time
 
-# formula 2
-for i in range(n):
-    m.addConstr(quicksum(X[i, j] for j in range(n)) <= 1)
+    # 0.35 - 0.05 / 60 * travel_time_on_bike_in_seconds from w --> apply this as a function to W
 
-# formula 3
-for j in range(n):
-    m.addConstr(quicksum(D[i] * W[i, j] * X[i, j] for i in range(n)) <= C * y[j])
+    # todo: how to get back to postcodes
 
-# formula 4
-m.addConstr(quicksum(D[i] * W[i, j] * X[i, j] for i in range(n) for j in range(n)) >= P * quicksum(D[i] for i in range(n)))
+    return W, n
 
-# formula 5
-m.addConstrs(X[i, j] <= y[j] for i in range(n) for j in range(n))
+def optimization_model():
+    """sth.."""
+    m = Model("Locker optimization")
 
-# formula 6
-for i in range(n):
+
+    W, n = demand()
+    D = np.random.rand(n*5)     # todo: import D
+    P = 0.25
+    C = 24
+
+    # decision variable
+    y = m.addVars(n, vtype=GRB.BINARY, name="y")
+
+    ij = list(product(range(n), range(n)))
+    X = m.addVars(ij, vtype=GRB.BINARY, name="X")
+
+    # formula 2
+    for i in range(n):
+        m.addConstr(quicksum(X[i, j] for j in range(n)) <= 1)
+
+    # formula 3
     for j in range(n):
-        if W[i, j] == 0:
-            m.addConstr(X[i, j] == 0)
+        m.addConstr(quicksum(D[i] * W[i, j] * X[i, j] for i in range(n)) <= C * y[j])
 
-# set objetive and optimize
-m.setObjective(quicksum(y[j] for j in range(n)), GRB.MINIMIZE)      # formula 1
-m.optimize()
+    # formula 4
+    m.addConstr(quicksum(D[i] * W[i, j] * X[i, j] for i in range(n) for j in range(n)) >= P * quicksum(D[i] for i in range(n)))
+
+    # formula 5
+    m.addConstrs(X[i, j] <= y[j] for i in range(n) for j in range(n))
+
+    # formula 6
+    for i in range(n):
+        for j in range(n):
+            if W[i, j] == 0:
+                m.addConstr(X[i, j] == 0)
+
+    # set objetive and optimize
+    m.setObjective(quicksum(y[j] for j in range(n)), GRB.MINIMIZE)      # formula 1
+    m.optimize()
 
 
-for v in m.getVars():
-    print("%s  %g" % (v.varName, v.x))
+    for v in m.getVars():
+        print("%s  %g" % (v.varName, v.x))
 
-print("Obj: %g" % m.objVal)
+    print("Obj: %g" % m.objVal)
+
+    # todo: extract information
+
+if __name__ == '__main__':
+    optimization_model()
