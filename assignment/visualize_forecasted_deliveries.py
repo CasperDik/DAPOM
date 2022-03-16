@@ -1,5 +1,5 @@
 import folium
-from es_queries import query_all_entries
+from es_queries import query_all_entries, query_count_locations, query_count_district
 from mycolorpy import colorlist as mcp
 import pandas as pd
 import holidays
@@ -37,50 +37,42 @@ def plot_locations(password_elasticsearch:  str):
     # save folium map as html
     m.save("outputs/locations.html")
 
+
 def descriptivestat_forecast(password_elasticsearch: str):
-    """compute and plot descriptive statistics for the forecast data retrieved from elasticsearch"""
-    # todo: can also do this directly via elasticsearch? if time
-    # need total deliveries(count) per district --> then divide by 365
-
-    # only query from elasticsearch when the pickle file doesn't exist, if it exists load the pickle file
-    if os.path.isfile("pickles/assignment_forecasts23.p"):
-        forecast_data = pd.read_pickle("pickles/assignment_forecasts23.p")
-    else:
-        query_all_entries(password_elasticsearch, "assignment_forecasts23")
-        forecast_data = pd.read_pickle("pickles/assignment_forecasts23.p")
-
+    """add sth.."""
     # create list with holidays to exclude
-    holidays_to_exclude = list(dict(holidays.NL(years=2023).items()).keys())
-    # exclude all holidays
-    forecast_data = forecast_data[~forecast_data["date"].isin(holidays_to_exclude)]
+    Holidays = list(dict(holidays.NL(years=2023).items()).keys())
+    holiday_to_exclude = []
 
-    # compute forecasted daily average deliveries per location
-    avg_d_deliveries_location = forecast_data.groupby(["postcode"])["cost"].count().div(365)
-    print(avg_d_deliveries_location.head())
+    # loop over this list to create part of the query that excludes the holidays
+    for holiday in Holidays:
+        holiday_to_exclude.append({
+            "range": {
+                "delivery_data": {
+                    "gte": holiday,
+                    "lte": holiday,
+                    "format": "yyyy-MM-dd"
+                }
+            }
+        })
 
-    # get districts
-    forecast_data["district"] = forecast_data["postcode"].str[:4]
+    # run the query to get the count per location and store in dataframe
+    location = pd.DataFrame(query_count_locations(password_elasticsearch, holiday_to_exclude))
+    # create new column with average daily deliveries per location
+    location["avg_daily_location"] = location["doc_count"].div(365)
+    print(location.head())
 
-    # compute total daily average deliveries for each district
-    avg_d_deliveries_district = forecast_data.groupby(["district"])["cost"].count().div(365)
-    print(avg_d_deliveries_district.head())
-
-    # compute total average deliveries for each district
-    # todo: is this correct --> it is now total deliveries per district but needs some average? of what? per day?
-    avg_deliveries_district = forecast_data.groupby(["district"])["cost"].count()
+    # run the query with the previously created search body and store in new dataframe
+    district = pd.DataFrame(query_count_district(password_elasticsearch, holiday_to_exclude))
+    # get average daily deliveries per district
+    district["avg_daily_district"] = district["doc_count"].div(365)
+    print(district.head())
 
     # plot on a bar chart
-    # todo: add (axis) titles and ylim
+    # todo: add (axis) titles and ylim + make nicer
     # plt.ylim([41.5, max(avg_deliveries_district)])
     plt.xticks(rotation='vertical')
-    plt.bar(forecast_data["district"].drop_duplicates(), avg_deliveries_district)
-    plt.show()
-
+    plt.bar(district["key"], district["avg_daily_district"])
     plt.savefig("outputs/bar_plot_deliveries.png")
 
-
-
-
-
-
-
+    plt.show()

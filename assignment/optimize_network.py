@@ -11,8 +11,8 @@ def demand():
     # todo: import actual travel times
     df = pd.read_excel("mock_data_weights.xlsx").to_numpy()
 
-    # count elements equal to first element --> basically counting duplicates
-    # also counts in second column thus double counting --> 9403RS - 9403RS & 9403RS - 9403RS --> both in list
+    # count elements equal to element [0][0] --> basically counting duplicates
+    # counts all items equal in entire array thus double counting --> 9403RS - 9403RS & 9403RS - 9403RS-->both in array
     # use for the size of the matrix --> size is number of duplicates + 1
     # todo: check if these comments make sense?
     n = int(np.count_nonzero(df == df[0][0])/2+1)
@@ -22,7 +22,7 @@ def demand():
     for i in range(n):
         for j in range(n):
             if i != j:
-                W[i, j] = 0.35 - 0.05/60 * df[c, 2]
+                W[i, j] = 0.35 - 0.05/60 * df[c, 2]     # todo: make this as variables
                 c += 1
 
     # diagonals should be 0
@@ -77,13 +77,13 @@ def optimization_model():
     m.setObjective(quicksum(y[j] for j in range(n)), GRB.MINIMIZE)      # formula 1
     m.optimize()
 
-
     for v in m.getVars():
         print("%s  %g" % (v.varName, v.x))
-
     print("Obj: %g" % m.objVal)
 
+
     # todo: extract information
+
 
 if __name__ == '__main__':
     optimization_model()
