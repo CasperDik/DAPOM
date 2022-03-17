@@ -74,7 +74,7 @@ def query_count_district(password_elasticsearch: str, list_to_exclude: list):
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
 
-    # search body of a query to get the counts per districts, while excluding holidays
+    # search body of a query to get the counts per districts while excluding holidays
     search_body = {"query": {
         "bool": {
             "must_not": list_to_exclude

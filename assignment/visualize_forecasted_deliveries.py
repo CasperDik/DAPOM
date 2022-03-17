@@ -6,6 +6,7 @@ import holidays
 import os
 import pickle
 import matplotlib.pylab as plt
+import random
 
 def plot_locations(password_elasticsearch:  str):
     """plot the locations using folium and the data from elasticsearch"""
@@ -24,8 +25,10 @@ def plot_locations(password_elasticsearch:  str):
     # get a list of all the districts without duplicates
     location_data["district"] = location_data["postcode"].str[:4]
     districts = location_data["districts"].drop_duplicates().to_list()
+
     # create a colormap of the length of the list of districts
-    cmap = mcp.gen_color(cmap="tab20b", n=len(districts))   # todo: other colormap?
+    cmap = mcp.gen_color(cmap="tab20b", n=len(districts))  # todo: other colormap?
+    random.shuffle(cmap)
     # create a dictionary were every district is linked to a column
     color_dict = dict(zip(districts, cmap))
 
@@ -60,12 +63,17 @@ def descriptivestat_forecast(password_elasticsearch: str):
     location = pd.DataFrame(query_count_locations(password_elasticsearch, holiday_to_exclude))
     # create new column with average daily deliveries per location
     location["avg_daily_location"] = location["doc_count"].div(365)
+    # sort based on postcode
+    location.sort_values("key", inplace=True)
     print(location.head())
+    # store data as pickle to use somewhere else
+    location.to_pickle("pickles/daily_deliveries_location.p")
 
     # run the query with the previously created search body and store in new dataframe
     district = pd.DataFrame(query_count_district(password_elasticsearch, holiday_to_exclude))
     # get average daily deliveries per district
     district["avg_daily_district"] = district["doc_count"].div(365)
+    district.sort_values("key", inplace=True)
     print(district.head())
 
     # plot on a bar chart
