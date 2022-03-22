@@ -7,8 +7,10 @@ import time
 from elasticsearch import Elasticsearch
 import os
 import folium
+import matplotlib.pyplot as plt
 
-def W_matrix(password_elasticsearch):
+
+def W_matrix(password_elasticsearch: str):
     tic = time.time()
 
     # connect to elasticsearch
@@ -52,7 +54,7 @@ def W_matrix(password_elasticsearch):
         # calculated demand using travel time from matrix m
         m = 0.35 - (0.05 / 60 * m)
         # set all items with zero travel time to zero demand
-        m[m == 0.35] = 0
+        m[m == 0.35] = 0        # todo: delete this part?
         # store demand matrix for each district in dictionary
         W[district] = m
 
@@ -65,10 +67,9 @@ def W_matrix(password_elasticsearch):
     print('Total running time of creating W matrix: {:.2f} seconds'.format(elapsed_time))
 
 
-def optimization_model(password_elasticsearch):
+def optimization_model(password_elasticsearch: str):
     """sth.."""
-
-    m = Model("Locker optimization")
+    tic = time.time()
 
     # load dataframe with all locations # todo: use pickle
     locations = pd.read_csv("input_data/geo_coordinates_per_each_location_cleaned.csv")
@@ -94,7 +95,11 @@ def optimization_model(password_elasticsearch):
     P = 0.25
     C = 24
 
+    results = {}
+
     for district in districts:
+        m = Model("Locker optimization")
+
         n = len(D[district])
 
         # decision variable
@@ -130,24 +135,65 @@ def optimization_model(password_elasticsearch):
         y = []
         x = []
         for v in m.getVars():
-            print("%s  %g" % (v.varName, v.x))
-            if "y" in v.Varname:
-                y.append(v.x)
-            elif "X" in v.Varname:
-                x.append(v.x)
+            if "y" in v.Varname and v.X == 1:
+                # appends the index of where y==1
+                y.append(int(v.Varname[2:-1]))
+            elif "X" in v.Varname and v.X == 1:
+                # appends a list with the index of start and end node when x==1
+                ind = str(v.Varname[2:-1]).split(",")
+                # to int
+                ind = list(map(int, ind))
+                x.append(ind)
         print("Obj: %g" % m.objVal)
 
-    # todo: store data, in dict?
+        results[district] = [x, y]
 
-        # todo: change location to new function
-        index = [i for i, j in enumerate(y) if j == 1]
-        x = locations[["lats", "longs"]].iloc[index]
-        m = folium.Map(location=[(min(x["lats"]) + max(x["lats"])) / 2, (min(x["longs"])+ max(x["longs"])) / 2], zoom_start=12)
+    pickle.dump(results, open("pickles/results.p", "wb"))
 
-        for lat, long in zip(x["lats"], x["longs"]):
-            folium.CircleMarker(location=(lat, long), radius=2).add_to(m)
+    toc = time.time()
+    elapsed_time = toc - tic
+    print('Total running time of optimizing network: {:.2f} seconds'.format(elapsed_time))
 
-        m.save("outputs/pickup_points.html")
+
+def plot_results():
+    results = pickle.load(open("pickles/results.p", "rb"))
+
+    # load dataframe with all locations # todo: use pickle
+    locations = pd.read_csv("input_data/geo_coordinates_per_each_location_cleaned.csv")
+    # create lists with all locations and all districts
+    districts = locations["postcode"].str[:4].drop_duplicates().to_list()
+
+    # initiate map
+    m = folium.Map(location=[(min(locations["lats"]) + max(locations["lats"])) / 2, (min(locations["longs"]) +
+                                max(locations["longs"])) / 2], zoom_start=12)
+
+    coords = {}
+    for district in districts:
+        coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
+
+    # todo: add some info to marker and colours, size etc
+    for district in districts:
+        for i in results[district][1]:
+            folium.Marker(location=(coords[district]["lats"][i], coords[district]["longs"][i])).add_to(m)
+
+        for j in results[district][0]:
+            folium.CircleMarker(location=(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), radius=1).add_to(m)
+            folium.PolyLine([(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), (coords[district]["lats"][j[1]], coords[district]["longs"][j[1]])]).add_to(m)
+
+
+    m.save("outputs/pickup_points.html")
+
+    # todo: --> Plot the number of pickup points in each district on a bar chart.
+    count = []
+    for district in districts:
+        count.append(len(results[district][1]))
+
+    plt.xticks(rotation='vertical')
+    plt.bar(districts, count)
+    plt.savefig("outputs/bar_plot_count_lockers.png")
+
+    #plt.show()
 
 if __name__ == '__main__':
-    optimization_model(password_elasticsearch=".")
+    # optimization_model(password_elasticsearch=".")
+    plot_results()

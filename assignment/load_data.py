@@ -63,7 +63,7 @@ def data_preparations():
         columns={"forecasted year": "year", "cost of the groceries ordered": "cost", "postcode-6-char": "postcode"})
 
     # create new column with districts for location data
-    location_data["districts"] = location_data["postcode"].str[:4]
+    location_data["districts"] = location_data["postcode"].str[:4]  # todo: delete from dataframe, pickle as list, upload again and check if it works
 
     # data transformations for forecast dataset:
     # change cost from string to float

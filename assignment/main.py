@@ -17,15 +17,15 @@ if __name__ == '__main__':
     execute()
 
     # es.indices.delete(index='.', ignore=[400, 404])
-
+# todo: network stuff --> put in functions and call using main also add weights, demand etc as input? --> easier to do sensitivity
 # todo: make pickle with district list and implement everywhere
-# todo: retrieve relevant data gurobi model --> put everything in dict first then pickle?
-# todo: network stuff --> put in functions and call using main
+# todo: import network file and functions from main
+# todo: better naming of functions etc and comments and docsstring
+# todo: do some layout for plotting (add stuff and colours etc)
+
 # todo: check gurobi model
-# todo: plot locations (read assignment first)
+# todo: do sensitivity
+# todo: improve code make nicer --> naming, comments, better code,
 
 # questions:
-# - still unsure about total average (daily) deliveries
-# - how to add html file to assignment document
 # - The number of daily forecasted grocery bag deliveries at the ith location is Di --> use the average?
-# - optimize per district or in total?
