@@ -170,7 +170,7 @@ def plot_results(results: dict, districts: list):
     for district in districts:
         coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
 
-    # todo: add some info to marker and colours, size etc
+    # todo: add some info to marker and colours, size etc, color per district?
     # for each district, plot a marker for each storage location(y=1), a circle marker for each location and a line from
     # each location to the storage location
     for district in districts:
