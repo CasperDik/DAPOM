@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 
 def execute():
-    password_elasticsearch = "stoepie35"        # remove password before commit
+    password_elasticsearch = "."        # remove password before commit
 
     # load the relevant data
     #load_data(password_elasticsearch)
@@ -36,7 +36,7 @@ def execute():
     #results = pickle.load(open("pickles/results.p", "rb"))
     #plot_results(results, districts)
 
-    # todo: change to biggest district
+    # todo: change to district with highest forecast
     max_perc_selfpickup = [x / 100.00 for x in range(10, 45, 5)]
     sensitivity_analysis(password_elasticsearch, "9723", P, C, Demand, max_perc_selfpickup)
 
