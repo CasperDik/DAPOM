@@ -8,7 +8,7 @@ import pickle
 import matplotlib.pylab as plt
 import random
 
-def plot_locations(password_elasticsearch:  str):
+def plot_locations(password_elasticsearch:  str, districts: list):
     """plot the locations using folium and the data from elasticsearch"""
 
     # only query from elasticsearch when the file pickle doesn't exist, if it exists load the pickle file
@@ -22,10 +22,6 @@ def plot_locations(password_elasticsearch:  str):
     m = folium.Map(location=[(min(location_data["lats"]) + max(location_data["lats"])) / 2, (min(location_data["longs"])
                                 + max(location_data["longs"])) / 2], zoom_start=12)
 
-    # get a list of all the districts without duplicates
-    location_data["district"] = location_data["postcode"].str[:4]
-    districts = location_data["districts"].drop_duplicates().to_list()
-
     # create a colormap of the length of the list of districts
     cmap = mcp.gen_color(cmap="tab20b", n=len(districts))  # todo: other colormap?
     random.shuffle(cmap)
@@ -34,7 +30,7 @@ def plot_locations(password_elasticsearch:  str):
 
     # todo: add forecast and 6 letter postcode to popup
     # plot a circle for each location on the folium map
-    for lat, long, a in zip(location_data["lats"], location_data["longs"], location_data["districts"]):
+    for lat, long, a in zip(location_data["lats"], location_data["longs"], location_data["postcode"].str[:4]):
         folium.CircleMarker(location=(lat, long), radius=2, color=color_dict.get(a), popup="district " + str(a)).add_to(m)
 
     # save folium map as html
@@ -42,7 +38,8 @@ def plot_locations(password_elasticsearch:  str):
 
 
 def descriptivestat_forecast(password_elasticsearch: str):
-    """add sth.."""
+    """computes descriptive statistics using elasticsearch and pandas"""
+
     # create list with holidays to exclude
     Holidays = list(dict(holidays.NL(years=2023).items()).keys())
     holiday_to_exclude = []
@@ -66,7 +63,7 @@ def descriptivestat_forecast(password_elasticsearch: str):
     # sort based on postcode
     location.sort_values("key", inplace=True)
     print(location.head())
-    # store data as pickle to use somewhere else
+    # store data as pickle to use later
     location.to_pickle("pickles/daily_deliveries_location.p")
 
     # run the query with the previously created search body and store in new dataframe

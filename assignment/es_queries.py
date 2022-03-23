@@ -4,7 +4,7 @@ import warnings
 import pickle
 
 def query_all_entries(password_elasticsearch, index_name):
-    """query all location from elasticsearch index: assignment_geo_coords"""
+    """query all elements from a elasticsearch index"""
 
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
@@ -43,11 +43,12 @@ def query_all_entries(password_elasticsearch, index_name):
 
 
 def query_count_locations(password_elasticsearch: str, list_to_exclude: list):
-    """add sth.."""
+    """query the count of each location that exists in the index, excluding dates that are in the list_to_exclude"""
+
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
 
-    # search body of a query to get value counts of each postcode while excluding holidays
+    # search body for a query to get value counts of each postcode while excluding holidays
     search_body = {"query": {
             "bool": {
                 "must_not": list_to_exclude
@@ -70,7 +71,8 @@ def query_count_locations(password_elasticsearch: str, list_to_exclude: list):
 
 
 def query_count_district(password_elasticsearch: str, list_to_exclude: list):
-    """add sth.."""
+    """query the count of each district that exists in the index, excluding dates that are in the list_to_exclude"""
+
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
 

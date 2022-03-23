@@ -2,6 +2,7 @@ from elasticsearch import Elasticsearch
 import time
 from loaders.loader import ingest_csv_file_into_elastic_index
 import pandas as pd
+import pickle
 
 
 def load_data(password_elasticsearch):
@@ -39,14 +40,14 @@ def load_data(password_elasticsearch):
     # todo: try this upload with mapping once
     # set mapping and upload distances to elasticsearch
     mapping_distances = {"properties":
-        {"start_point_travel": {"type": "string"},
-         "end_point_travel": {"type": "string"},
-         "distance_in_meters": {"type": "float"},
-         "travel_time_on_bike_in_seconds": {"type": "float"}
-         }
-    }
+                             {"start_point_travel": {"type": "string"},
+                              "end_point_travel": {"type": "string"},
+                              "distance_in_meters": {"type": "float"},
+                              "travel_time_on_bike_in_seconds": {"type": "float"}
+                              }
+                         }
     upload_to_es(es, filename="input_data/distances_between_locations.csv", index_name="assignment_distances",
-               buffer_size=150000, mapping=mapping_distances)
+                 buffer_size=150000, mapping=mapping_distances)
 
 
 def data_preparations():
@@ -62,8 +63,9 @@ def data_preparations():
     forecast_data = forecast_data.rename(
         columns={"forecasted year": "year", "cost of the groceries ordered": "cost", "postcode-6-char": "postcode"})
 
-    # create new column with districts for location data
-    location_data["districts"] = location_data["postcode"].str[:4]  # todo: delete from dataframe, pickle as list, upload again and check if it works
+    # create na list with all district locations
+    districts = location_data["postcode"].str[:4].drop_duplicates().to_list()
+    pickle.dump(districts, open("pickles/districts.p", "wb"))
 
     # data transformations for forecast dataset:
     # change cost from string to float
