@@ -10,7 +10,7 @@ import folium
 import matplotlib.pyplot as plt
 
 
-def W_matrix(password_elasticsearch: str, districts: list):
+def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: float, sensitivity_analysis=None):
     """creates W_matrix as a dictionary of numpy arrays using elasticsearch, where the keys are the districts as
     provided in the districts list"""
 
@@ -49,22 +49,25 @@ def W_matrix(password_elasticsearch: str, districts: list):
                 output = np.array([data["hits"]["hits"][i]["_source"]["travel_time_on_bike_in_seconds"] for i in range(len(data["hits"]["hits"]))])
                 # insert 0 at index i to get 0s on diagonals
                 output = np.insert(output, i, 0)
-
                 if i > 0:   # if matrix m is not empty, stack output on matrix m
                     m = np.vstack([m, output])
                 if i == 0:  # if matrix m is empty, set m equal to queried output
                     m = output
                 i += 1
-
         # calculated demand using travel time from matrix m
-        m = 0.35 - (0.05 / 60 * m)      # todo: as inputs?
+        m = max_perc_selfpickup - (0.05 / 60 * m)      # todo: as inputs?
         # set all items with zero travel time to zero demand
-        m[m == 0.35] = 0        # todo: delete this part?
+        m[m == max_perc_selfpickup] = 0        # todo: delete this part?
         # store demand matrix for each district in dictionary
         W[district] = m
 
-    # store W matrix with pickle
-    pickle.dump(W, open("pickles/W_matrix.p", "wb"))
+    if sensitivity_analysis == True:
+
+        # store W matrix with pickle
+        pickle.dump(W, open("pickles/sensitivity_analysis/W_matrix_" + districts[0] + "_max_percentage_" + str(max_perc_selfpickup) + ".p", "wb"))
+    else:
+        # store W matrix with pickle
+        pickle.dump(W, open("pickles/W_matrix.p", "wb"))
 
     # print time
     toc = time.time()
@@ -72,7 +75,7 @@ def W_matrix(password_elasticsearch: str, districts: list):
     print('Total running time of creating W matrix: {:.2f} seconds'.format(elapsed_time))
 
 
-def optimization_model(districts: list, P: float, C: float, W: dict, Demand):
+def optimization_model(districts: list, P: float, C: float, W: dict, Demand, max_percentage: float, sensitivity_analysis=None):
     """optimizes the model for each district in the provided list, for inputs P, C, W and demand"""
     tic = time.time()
 
@@ -123,28 +126,35 @@ def optimization_model(districts: list, P: float, C: float, W: dict, Demand):
         # optimize the defined objective function with the constraint
         m.optimize()
 
-        # print the result of the objective function
-        print("Obj: %g" % m.objVal)
-
         # create empty lists to store the results
         y = []
         x = []
-        for v in m.getVars():
-            if "y" in v.Varname and v.X == 1:
-                # appends the index of where y==1
-                y.append(int(v.Varname[2:-1]))
-            elif "X" in v.Varname and v.X == 1:
-                # appends a list with the index of start and end node when x==1
-                ind = str(v.Varname[2:-1]).split(",")
-                # get the indices from string to integer
-                ind = list(map(int, ind))
-                x.append(ind)
+
+        try:
+            # print the result of the objective function
+            print("Obj: %g" % m.objVal)
+
+            for v in m.getVars():
+                if "y" in v.Varname and v.X == 1:
+                    # appends the index of where y==1
+                    y.append(int(v.Varname[2:-1]))
+                elif "X" in v.Varname and v.X == 1:
+                    # appends a list with the index of start and end node when x==1
+                    ind = str(v.Varname[2:-1]).split(",")
+                    # get the indices from string to integer
+                    ind = list(map(int, ind))
+                    x.append(ind)
+        except AttributeError:      # captures error when model is infeasible. Useful for sensitivity analysis
+            pass
 
         # store the results in a dictionary under the key district
         results[district] = [x, y]
 
-    # store using pickle
-    pickle.dump(results, open("pickles/results.p", "wb"))
+    if sensitivity_analysis == True:
+        pickle.dump(results, open("pickles/sensitivity_analysis/results_" + districts[0] + "_max_percentage_" + str(max_percentage) + ".p", "wb"))
+    else:
+        # store using pickle
+        pickle.dump(results, open("pickles/results.p", "wb"))
 
     # print total time for optimizing the model for all the districts
     toc = time.time()
@@ -162,7 +172,6 @@ def plot_results(results: dict, districts: list):
     # initiate map
     m = folium.Map(location=[(min(locations["lats"]) + max(locations["lats"])) / 2, (min(locations["longs"]) +
                                 max(locations["longs"])) / 2], zoom_start=12)
-
 
     coords = {}
     # for each district store in a dictionary all the latitude and longitude data of the locations in that district
@@ -186,6 +195,7 @@ def plot_results(results: dict, districts: list):
     for district in districts:
         # count the length of the list with indices where y=1
         count.append(len(results[district][1]))
+
     # todo: layout
     plt.xticks(rotation='vertical')
     plt.bar(districts, count)
@@ -193,6 +203,27 @@ def plot_results(results: dict, districts: list):
 
     plt.show()
 
-if __name__ == '__main__':
-    # optimization_model(password_elasticsearch=".")
-    plot_results()
+
+def sensitivity_analysis(password_elasticsearch: str, district: str, P: float, C: float, Demand, max_perc_selfpickup: list):
+    """sth..."""
+    # todo: add comments + also
+
+    count = {}
+
+    for max_percentage in max_perc_selfpickup:
+        if not os.path.exists("pickles/sensitivity_analysis/W_matrix_" + district + "_max_percentage_" + str(max_percentage) + ".p"):
+            W_matrix(password_elasticsearch, [district], max_percentage, sensitivity_analysis=True)
+        if not os.path.exists("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p"):
+            W = pickle.load(open("pickles/sensitivity_analysis/W_matrix_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))
+            optimization_model([district], P, C, W, Demand, max_percentage, sensitivity_analysis=True)
+
+        result = pickle.load(open("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))
+        count[max_percentage] = len(result[district][1])
+
+    # todo: layout
+    x = [str(i) for i in count.keys()]
+    plt.bar(x, count.values(), width=0.35, align='center')
+    plt.savefig("outputs/bar_plot_count_lockers_sensitivity.png")
+
+    plt.show()
+
