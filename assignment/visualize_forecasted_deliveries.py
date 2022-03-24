@@ -20,15 +20,20 @@ def plot_locations(password_elasticsearch:  str, districts: list):
 
     # initiate the map
     m = folium.Map(location=[(min(location_data["lats"]) + max(location_data["lats"])) / 2, (min(location_data["longs"])
-                                + max(location_data["longs"])) / 2], zoom_start=12)
+                                + max(location_data["longs"])) / 2], zoom_start=13)
+    # add custom map tile
+    folium.TileLayer(
+        tiles='https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png',
+        attr='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        ).add_to(m)
 
     # create a colormap of the length of the list of districts
-    cmap = mcp.gen_color(cmap="tab20b", n=len(districts))  # todo: other colormap?
+    cmap = mcp.gen_color(cmap="tab20b", n=len(districts))
     random.shuffle(cmap)
     # create a dictionary were every district is linked to a column
     color_dict = dict(zip(districts, cmap))
 
-    # todo: add forecast and 6 letter postcode to popup
+    # todo: add forecast and 6 letter postcode to popup?
     # plot a circle for each location on the folium map
     for lat, long, a in zip(location_data["lats"], location_data["longs"], location_data["postcode"].str[:4]):
         folium.CircleMarker(location=(lat, long), radius=2, color=color_dict.get(a), popup="district " + str(a)).add_to(m)
@@ -74,9 +79,11 @@ def descriptivestat_forecast(password_elasticsearch: str):
     print(district.head())
 
     # plot on a bar chart
-    # todo: add (axis) titles and ylim + make nicer
-    # plt.ylim([41.5, max(avg_deliveries_district)])
+    plt.title("Average Daily Deliveries per District")
+    plt.xlabel("Districts")
+    plt.ylabel("Average Daily Deliveries")
     plt.xticks(rotation='vertical')
+    plt.tight_layout()
     plt.bar(district["key"], district["avg_daily_district"])
     plt.savefig("outputs/bar_plot_deliveries.png")
 

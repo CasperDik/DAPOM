@@ -171,7 +171,12 @@ def plot_results(results: dict, districts: list):
 
     # initiate map
     m = folium.Map(location=[(min(locations["lats"]) + max(locations["lats"])) / 2, (min(locations["longs"]) +
-                                max(locations["longs"])) / 2], zoom_start=12)
+                                max(locations["longs"])) / 2], zoom_start=13)
+    # add custom map tile
+    folium.TileLayer(
+        tiles='https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png',
+        attr='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        ).add_to(m)
 
     coords = {}
     # for each district store in a dictionary all the latitude and longitude data of the locations in that district
@@ -179,16 +184,18 @@ def plot_results(results: dict, districts: list):
     for district in districts:
         coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
 
-    # todo: add some info to marker and colours, size etc, color per district?
+    # todo: add some info to marker
     # for each district, plot a marker for each storage location(y=1), a circle marker for each location and a line from
     # each location to the storage location
     for district in districts:
         for i in results[district][1]:      # results[district][1] stores the indices where y=1 for each district
-            folium.Marker(location=(coords[district]["lats"][i], coords[district]["longs"][i])).add_to(m)
+            folium.Marker(location=(coords[district]["lats"][i], coords[district]["longs"][i]), icon=folium.Icon(color="green", icon="inbox"),
+                          popup="Locker in district " + district).add_to(m)
 
-        for j in results[district][0]:      # results[district][o] stores a list of the indices where x=1
-            folium.CircleMarker(location=(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), radius=1).add_to(m)
-            folium.PolyLine([(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), (coords[district]["lats"][j[1]], coords[district]["longs"][j[1]])]).add_to(m)
+        for j in results[district][0]:      # results[district][0] stores a list of the indices where x=1
+            folium.CircleMarker(location=(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), radius=1, color="white", popup="Location in district " + district).add_to(m)
+            folium.PolyLine([(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]),
+                             (coords[district]["lats"][j[1]], coords[district]["longs"][j[1]])], color="green", opacity=0.5).add_to(m)
     m.save("outputs/pickup_points.html")
 
     count = []
@@ -196,8 +203,11 @@ def plot_results(results: dict, districts: list):
         # count the length of the list with indices where y=1
         count.append(len(results[district][1]))
 
-    # todo: layout
-    plt.xticks(rotation='vertical')
+    plt.xlabel("Districts")
+    plt.ylabel("Optimal Number of Lockers")
+    plt.title("Optimal Number of Lockers per District")
+    plt.xticks(rotation="vertical")
+    plt.tight_layout()
     plt.bar(districts, count)
     plt.savefig("outputs/bar_plot_count_lockers.png")
 
@@ -205,25 +215,31 @@ def plot_results(results: dict, districts: list):
 
 
 def sensitivity_analysis(password_elasticsearch: str, district: str, P: float, C: float, Demand, max_perc_selfpickup: list):
-    """sth..."""
-    # todo: add comments + also
+    """performs sensitivity analysis by plotting the optimal number of lockers for a range of maximum demands for a
+    given district """
 
     count = {}
-
+    # loops over the list with maximum demands
     for max_percentage in max_perc_selfpickup:
+        # create the W matrix for the specific district and maximum demand if it does not exist yet
         if not os.path.exists("pickles/sensitivity_analysis/W_matrix_" + district + "_max_percentage_" + str(max_percentage) + ".p"):
             W_matrix(password_elasticsearch, [district], max_percentage, sensitivity_analysis=True)
+        # load the W matrix, and optimize the model for that specific W matrix if the results do not exist yet
         if not os.path.exists("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p"):
             W = pickle.load(open("pickles/sensitivity_analysis/W_matrix_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))
             optimization_model([district], P, C, W, Demand, max_percentage, sensitivity_analysis=True)
 
+        # load the results and add the optimal number of lockers to the dictionary
         result = pickle.load(open("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))
         count[max_percentage] = len(result[district][1])
 
-    # todo: layout
+    # transform keys of dictionary to strings for bar chart
     x = [str(i) for i in count.keys()]
+    # layout, plot, save and show the bar chart
+    plt.title("Optimal Number of Lockers for District " + district)
+    plt.xlabel("Maximum Demand for Self-Pickups")
+    plt.ylabel("Optimal Number of Lockers")
     plt.bar(x, count.values(), width=0.35, align='center')
     plt.savefig("outputs/bar_plot_count_lockers_sensitivity.png")
-
     plt.show()
 
