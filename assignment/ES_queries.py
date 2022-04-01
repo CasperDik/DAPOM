@@ -8,8 +8,6 @@ def query_all_entries(password_elasticsearch, index_name):
 
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
-
-    # todo: exactly learn how this scrolling works --> for oral exam
     # Init scroll by search
     data = es.search(index=index_name, scroll="2m", size=10000, body={})
 
@@ -42,7 +40,7 @@ def query_all_entries(password_elasticsearch, index_name):
     df.to_pickle("pickles/" + index_name + ".p")
 
 
-def query_count_locations(password_elasticsearch: str, list_to_exclude: list):
+def query_locations_count(password_elasticsearch: str, list_to_exclude: list):
     """query the count of each location that exists in the index, excluding dates that are in the list_to_exclude"""
 
     # connect to elasticsearch
@@ -70,7 +68,7 @@ def query_count_locations(password_elasticsearch: str, list_to_exclude: list):
     return data["aggregations"]["count"]["buckets"]
 
 
-def query_count_district(password_elasticsearch: str, list_to_exclude: list):
+def query_district_count(password_elasticsearch: str, list_to_exclude: list):
     """query the count of each district that exists in the index, excluding dates that are in the list_to_exclude"""
 
     # connect to elasticsearch

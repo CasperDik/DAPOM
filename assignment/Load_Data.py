@@ -24,7 +24,7 @@ def load_data(password_elasticsearch):
                              "longs": {"type": "float"},
                              }
                         }
-    upload_to_es(es, filename="input_data/geo_coordinates_per_each_location_cleaned.csv",
+    upload_to_ES(es, filename="input_data/geo_coordinates_per_each_location_cleaned.csv",
                  index_name="assignment_geo_coords", buffer_size=5000, mapping=mapping_location)
 
     # set mapping and upload forecasts to elasticsearch
@@ -34,7 +34,7 @@ def load_data(password_elasticsearch):
                              "date": {"type": "date", "format": "yyyy-MM-dd"}
                              }
                         }
-    upload_to_es(es, filename="input_data/forecasts_2023_cleaned.csv", index_name="assignment_forecasts23",
+    upload_to_ES(es, filename="input_data/forecasts_2023_cleaned.csv", index_name="assignment_forecasts23",
                  buffer_size=15000, mapping=mapping_forecast)
 
     # todo: try this upload with mapping once
@@ -46,7 +46,7 @@ def load_data(password_elasticsearch):
                               "travel_time_on_bike_in_seconds": {"type": "float"}
                               }
                          }
-    upload_to_es(es, filename="input_data/distances_between_locations.csv", index_name="assignment_distances",
+    upload_to_ES(es, filename="input_data/distances_between_locations.csv", index_name="assignment_distances",
                  buffer_size=150000, mapping=mapping_distances)
 
 
@@ -88,7 +88,7 @@ def data_preparations():
     forecast_data.to_csv("input_data/forecasts_2023_cleaned.csv", index=False)
 
 
-def upload_to_es(elastic_client: Elasticsearch, filename: str, index_name: str, buffer_size=None, mapping=None):
+def upload_to_ES(elastic_client: Elasticsearch, filename: str, index_name: str, buffer_size=None, mapping=None):
     """
     Creates a new index in Elasticsearch and uploads the data of a .csv to it. Mapping can be specified but is not
     required.

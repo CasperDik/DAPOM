@@ -55,14 +55,14 @@ def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: 
                     m = output
                 i += 1
         # calculated demand using travel time from matrix m
-        m = max_perc_selfpickup - (0.05 / 60 * m)      # todo: as inputs?
-        # set all items with zero travel time to zero demand
-        m[m == max_perc_selfpickup] = 0        # todo: delete this part?
+        m = max_perc_selfpickup - (0.05 / 60 * m)
+        # uncomment if want to set all items with zero travel time to zero demand(if location has no demand when locker is at that location)
+        # m[m == max_perc_selfpickup] = 0
+
         # store demand matrix for each district in dictionary
         W[district] = m
 
     if sensitivity_analysis == True:
-
         # store W matrix with pickle
         pickle.dump(W, open("pickles/sensitivity_analysis/W_matrix_" + districts[0] + "_max_percentage_" + str(max_perc_selfpickup) + ".p", "wb"))
     else:
@@ -75,7 +75,7 @@ def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: 
     print('Total running time of creating W matrix: {:.2f} seconds'.format(elapsed_time))
 
 
-def optimization_model(districts: list, P: float, C: float, W: dict, Demand, max_percentage: float, sensitivity_analysis=None):
+def optimizing_locker_network(districts: list, P: float, C: float, W: dict, Demand, max_percentage: float, sensitivity_analysis=None):
     """optimizes the model for each district in the provided list, for inputs P, C, W and demand"""
     tic = time.time()
 
@@ -100,7 +100,6 @@ def optimization_model(districts: list, P: float, C: float, W: dict, Demand, max
         y = m.addVars(n, vtype=GRB.BINARY, name="y")
         X = m.addVars(ij, vtype=GRB.BINARY, name="X")
 
-        # todo: check model
         # add formula 2(constraint) from the model
         for i in range(n):
             m.addConstr(quicksum(X[i, j] for j in range(n)) <= 1)
@@ -134,12 +133,13 @@ def optimization_model(districts: list, P: float, C: float, W: dict, Demand, max
             # print the result of the objective function
             print("Obj: %g" % m.objVal)
 
+            # store the results
             for v in m.getVars():
                 if "y" in v.Varname and v.X == 1:
                     # appends the index of where y==1
                     y.append(int(v.Varname[2:-1]))
                 elif "X" in v.Varname and v.X == 1:
-                    # appends a list with the index of start and end node when x==1
+                    # appends a list with the indices of start and end node when x==1
                     ind = str(v.Varname[2:-1]).split(",")
                     # get the indices from string to integer
                     ind = list(map(int, ind))
@@ -184,7 +184,6 @@ def plot_results(results: dict, districts: list):
     for district in districts:
         coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
 
-    # todo: add some info to marker
     # for each district, plot a marker for each storage location(y=1), a circle marker for each location and a line from
     # each location to the storage location
     for district in districts:
@@ -227,7 +226,7 @@ def sensitivity_analysis(password_elasticsearch: str, district: str, P: float, C
         # load the W matrix, and optimize the model for that specific W matrix if the results do not exist yet
         if not os.path.exists("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p"):
             W = pickle.load(open("pickles/sensitivity_analysis/W_matrix_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))
-            optimization_model([district], P, C, W, Demand, max_percentage, sensitivity_analysis=True)
+            optimizing_locker_network([district], P, C, W, Demand, max_percentage, sensitivity_analysis=True)
 
         # load the results and add the optimal number of lockers to the dictionary
         result = pickle.load(open("pickles/sensitivity_analysis/results_" + district + "_max_percentage_" + str(max_percentage) + ".p", "rb"))

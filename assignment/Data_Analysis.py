@@ -1,5 +1,5 @@
 import folium
-from es_queries import query_all_entries, query_count_locations, query_count_district
+from ES_queries import query_all_entries, query_locations_count, query_district_count
 from mycolorpy import colorlist as mcp
 import pandas as pd
 import holidays
@@ -8,7 +8,7 @@ import pickle
 import matplotlib.pylab as plt
 import random
 
-def plot_locations(password_elasticsearch:  str, districts: list):
+def plot_all_locations(password_elasticsearch:  str, districts: list):
     """plot the locations using folium and the data from elasticsearch"""
 
     # only query from elasticsearch when the file pickle doesn't exist, if it exists load the pickle file
@@ -33,7 +33,6 @@ def plot_locations(password_elasticsearch:  str, districts: list):
     # create a dictionary were every district is linked to a column
     color_dict = dict(zip(districts, cmap))
 
-    # todo: add forecast and 6 letter postcode to popup?
     # plot a circle for each location on the folium map
     for lat, long, a in zip(location_data["lats"], location_data["longs"], location_data["postcode"].str[:4]):
         folium.CircleMarker(location=(lat, long), radius=2, color=color_dict.get(a), popup="district " + str(a)).add_to(m)
@@ -42,7 +41,7 @@ def plot_locations(password_elasticsearch:  str, districts: list):
     m.save("outputs/locations.html")
 
 
-def descriptivestat_forecast(password_elasticsearch: str):
+def descriptive_statistics_forecast_data(password_elasticsearch: str):
     """computes descriptive statistics using elasticsearch and pandas"""
 
     # create list with holidays to exclude
@@ -62,7 +61,7 @@ def descriptivestat_forecast(password_elasticsearch: str):
         })
 
     # run the query to get the count per location and store in dataframe
-    location = pd.DataFrame(query_count_locations(password_elasticsearch, holiday_to_exclude))
+    location = pd.DataFrame(query_locations_count(password_elasticsearch, holiday_to_exclude))
     # create new column with average daily deliveries per location
     location["avg_daily_location"] = location["doc_count"].div(365)
     # sort based on postcode
@@ -72,7 +71,7 @@ def descriptivestat_forecast(password_elasticsearch: str):
     location.to_pickle("pickles/daily_deliveries_location.p")
 
     # run the query with the previously created search body and store in new dataframe
-    district = pd.DataFrame(query_count_district(password_elasticsearch, holiday_to_exclude))
+    district = pd.DataFrame(query_district_count(password_elasticsearch, holiday_to_exclude))
     # get average daily deliveries per district
     district["avg_daily_district"] = district["doc_count"].div(365)
     district.sort_values("key", inplace=True)
