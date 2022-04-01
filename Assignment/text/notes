@@ -1,0 +1,46 @@
+check recordings lecture 4 adn 5 for code
+
+multiple files run with main(.py)
+
+w = weight/willingness --> to far won't go
+
+gc.collect to free memory(don't use too often, slow?)
+
+use folium
+
+sensitivity analysis for assumptions
+
+use mainly elasticsearch
+
+use:
+    tic = time.time()
+
+    # Time and print the elapsed time
+    toc = time.time()
+    elapsed_time = toc - tic
+    print('Total running time of GBM: {:.2f} seconds'.format(elapsed_time))
+
+
+pickle --> store in temporary file
+pickle.dump([all_locs, dist], open("temp_x.p, "wb))
+locs = dists = pickle.load(open(temp_x.p, "rb"))
+
+also use pickle for other results e.g. results of gurobi
+
+sensitivity analysis on 1 district --> pick biggest
+
+necessary to use pandas --> for data preparation
+also use numpy as much as possible --> faster
+
+w matrix is demand for locker?
+
+
+notes grading:
+also on nestor?
+sensitivity --> P variation?
+bar chart optimal number of pickup points
+max 3 pages of text excluding graphs
+comments in code!! docstrings?
+
+
+if time --> use classes --> but only if it is correct!! might be good practise
