@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 import time
-from loaders.loader import ingest_csv_file_into_elastic_index
+from assignment.loader import ingest_csv_file_into_elastic_index
 import pandas as pd
 import pickle
 
@@ -63,7 +63,7 @@ def data_preparations():
     forecast_data = forecast_data.rename(
         columns={"forecasted year": "year", "cost of the groceries ordered": "cost", "postcode-6-char": "postcode"})
 
-    # create na list with all district locations
+    # create na list with all district locations and store in pickle
     districts = location_data["postcode"].str[:4].drop_duplicates().to_list()
     pickle.dump(districts, open("pickles/districts.p", "wb"))
 
@@ -74,12 +74,13 @@ def data_preparations():
     # replace the months to index of months
     months = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8,
               "September": 9, "October": 10, "November": 11, "December": 12}
-    forecast_data["month"] = pd.to_numeric(forecast_data['month'].replace(months))
+    # todo: to numeric needed here?
+    forecast_data["month"] = pd.to_numeric(forecast_data["month"].replace(months))
 
     # remove the 29th of February 2023 from data as it does not exist
     forecast_data = forecast_data[(forecast_data["day"] != 29) & (forecast_data["month"] != 2)]
 
-    # create new column "date", and drop day, month, year columns
+    # create new column "date", and drop day, month, year, minute, hour columns
     forecast_data["date"] = pd.to_datetime(forecast_data[["year", "month", "day"]], format="%Y/%m/%d")
     forecast_data = forecast_data.drop(["day", "month", "year", "minute", "hour"], axis=1)
 

@@ -105,6 +105,12 @@ def plot_network_bonus(results: dict, districts: list):
     # load locations data
     locations = pd.read_pickle("pickles/assignment_geo_coords.p")
 
+    coords = {}
+    # for each district store in a dictionary all the latitude and longitude data of the locations in that district
+    # important to do it per district, since the results stored the indexes also per district
+    for district in districts:
+        coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
+
     # initiate map
     m = folium.Map(location=[(min(locations["lats"]) + max(locations["lats"])) / 2, (min(locations["longs"]) +
                                                                                      max(locations["longs"])) / 2],
@@ -114,12 +120,6 @@ def plot_network_bonus(results: dict, districts: list):
         tiles='https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png',
         attr='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     ).add_to(m)
-
-    coords = {}
-    # for each district store in a dictionary all the latitude and longitude data of the locations in that district
-    # important to do it per district, since the results stored the indexes also per district
-    for district in districts:
-        coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
 
     # initiate dictionary with where different locker sizes are linked to colours
     colours = {6: "blue", 12: "red", 18: "green"}
@@ -138,6 +138,6 @@ def plot_network_bonus(results: dict, districts: list):
             folium.PolyLine([(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]),
                              (coords[district]["lats"][j[1]], coords[district]["longs"][j[1]])], color="grey",
                             opacity=0.5).add_to(m)
-    m.save("outputs/bonus.html")
+    m.save("outputs/locker_network_bonus.html")
 
 

@@ -38,7 +38,7 @@ def plot_all_locations(password_elasticsearch:  str, districts: list):
         folium.CircleMarker(location=(lat, long), radius=2, color=color_dict.get(a), popup="district " + str(a)).add_to(m)
 
     # save folium map as html
-    m.save("outputs/locations.html")
+    m.save("outputs/all_locations_with_colours.html")
 
 
 def descriptive_statistics_forecast_data(password_elasticsearch: str):
@@ -66,7 +66,7 @@ def descriptive_statistics_forecast_data(password_elasticsearch: str):
     location["avg_daily_location"] = location["doc_count"].div(365)
     # sort based on postcode
     location.sort_values("key", inplace=True)
-    print(location.head())
+    print("Average daily deliveries per location: \n", location.head())
     # store data as pickle to use later
     location.to_pickle("pickles/daily_deliveries_location.p")
 
@@ -75,7 +75,7 @@ def descriptive_statistics_forecast_data(password_elasticsearch: str):
     # get average daily deliveries per district
     district["avg_daily_district"] = district["doc_count"].div(365)
     district.sort_values("key", inplace=True)
-    print(district.head())
+    print("Average daily deliveries per district: \n", district.head())
 
     # plot on a bar chart
     plt.title("Average Daily Deliveries per District")

@@ -24,7 +24,7 @@ def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: 
     locations = pd.read_pickle("pickles/assignment_geo_coords.p")
     # create lists with all locations
     locations_unique = locations["postcode"].to_list()
-    # create and empty dictionary to store the W matrix
+    # create an empty dictionary to store the W matrix in
     W = {}
 
     for district in districts:
@@ -38,7 +38,7 @@ def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: 
                                 "query": {
                                     "bool": {
                                         "must": [
-                                            {"wildcard": {"end_point_travel.keyword": locations[:4] + "*"}},
+                                            {"wildcard": {"end_point_travel.keyword": district + "*"}},
                                             {"term": {"start_point_travel.keyword": locations}}
                                         ]
                                     }
@@ -49,19 +49,23 @@ def W_matrix(password_elasticsearch: str, districts: list, max_perc_selfpickup: 
                 output = np.array([data["hits"]["hits"][i]["_source"]["travel_time_on_bike_in_seconds"] for i in range(len(data["hits"]["hits"]))])
                 # insert 0 at index i to get 0s on diagonals
                 output = np.insert(output, i, 0)
-                if i > 0:   # if matrix m is not empty, stack output on matrix m
-                    m = np.vstack([m, output])
-                if i == 0:  # if matrix m is empty, set m equal to queried output
-                    m = output
                 i += 1
+                try:    # if matrix m exists, stack output on matrix m
+                    m = np.vstack([m, output])
+                except NameError:   # if matrix m does not exist yet, create and set m equal to queried output
+                    m = output
+
         # calculated demand using travel time from matrix m
         m = max_perc_selfpickup - (0.05 / 60 * m)
-        # uncomment if want to set all items with zero travel time to zero demand(if location has no demand when locker is at that location)
+        # uncomment line below if you want to set all items with zero travel time to zero demand
+        # (if it is assumed that a location has no demand when locker is at that location)
+        # since postcodes are used as proxy for location, and multiple people live at the same postcode, this line of code is commented
         # m[m == max_perc_selfpickup] = 0
 
-        # store demand matrix for each district in dictionary
+        # store demand matrix for each district in dictionary, with the district as key
         W[district] = m
 
+    # if function is called for sensitivity analysis, store the output with a different name and at a different location
     if sensitivity_analysis == True:
         # store W matrix with pickle
         pickle.dump(W, open("pickles/sensitivity_analysis/W_matrix_" + districts[0] + "_max_percentage_" + str(max_perc_selfpickup) + ".p", "wb"))
@@ -101,12 +105,11 @@ def optimizing_locker_network(districts: list, P: float, C: float, W: dict, Dema
         X = m.addVars(ij, vtype=GRB.BINARY, name="X")
 
         # add formula 2(constraint) from the model
-        for i in range(n):
-            m.addConstr(quicksum(X[i, j] for j in range(n)) <= 1)
+        m.addConstrs(quicksum(X[i, j] for j in range(n)) <= 1 for i in range(n))
 
         # add formula 3(constraint) from the model
-        for j in range(n):
-            m.addConstr(quicksum(D[district][i] * W[district][i, j] * X[i, j] for i in range(n)) <= C * y[j])
+
+        m.addConstrs(quicksum(D[district][i] * W[district][i, j] * X[i, j] for i in range(n)) <= C * y[j] for j in range(n))
 
         # add formula 4(constraint) from the model
         m.addConstr(quicksum(D[district][i] * W[district][i, j] * X[i, j] for i in range(n) for j in range(n)) >= P * quicksum(D[district][i] for i in range(n)))
@@ -150,6 +153,7 @@ def optimizing_locker_network(districts: list, P: float, C: float, W: dict, Dema
         # store the results in a dictionary under the key district
         results[district] = [x, y]
 
+    # if function is called for sensitivity analysis, store the output with a different name and at a different location
     if sensitivity_analysis == True:
         pickle.dump(results, open("pickles/sensitivity_analysis/results_" + districts[0] + "_max_percentage_" + str(max_percentage) + ".p", "wb"))
     else:
@@ -179,10 +183,10 @@ def plot_results(results: dict, districts: list):
         ).add_to(m)
 
     coords = {}
-    # for each district store in a dictionary all the latitude and longitude data of the locations in that district
+    # for each district, store in a dictionary all the latitude and longitude data of the locations in that district
     # important to do it per district, since the results stored the indexes also per district
     for district in districts:
-        coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict('list')
+        coords[district] = locations[locations["postcode"].str[:4] == district][["lats", "longs"]].to_dict("list")
 
     # for each district, plot a marker for each storage location(y=1), a circle marker for each location and a line from
     # each location to the storage location
@@ -195,7 +199,7 @@ def plot_results(results: dict, districts: list):
             folium.CircleMarker(location=(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]), radius=1, color="white", popup="Location in district " + district).add_to(m)
             folium.PolyLine([(coords[district]["lats"][j[0]], coords[district]["longs"][j[0]]),
                              (coords[district]["lats"][j[1]], coords[district]["longs"][j[1]])], color="green", opacity=0.5).add_to(m)
-    m.save("outputs/pickup_points.html")
+    m.save("outputs/locker_locations.html")
 
     count = []
     for district in districts:
@@ -208,7 +212,7 @@ def plot_results(results: dict, districts: list):
     plt.xticks(rotation="vertical")
     plt.tight_layout()
     plt.bar(districts, count)
-    plt.savefig("outputs/bar_plot_count_lockers.png")
+    plt.savefig("outputs/bar_plot_locker_count.png")
 
     plt.show()
 
@@ -239,6 +243,6 @@ def sensitivity_analysis(password_elasticsearch: str, district: str, P: float, C
     plt.xlabel("Maximum Demand for Self-Pickups")
     plt.ylabel("Optimal Number of Lockers")
     plt.bar(x, count.values(), width=0.35, align='center')
-    plt.savefig("outputs/bar_plot_count_lockers_sensitivity.png")
+    plt.savefig("outputs/bar_plot_locker_count_sensitivity.png")
     plt.show()
 
