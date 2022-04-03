@@ -4,7 +4,6 @@ from mycolorpy import colorlist as mcp
 import pandas as pd
 import holidays
 import os
-import pickle
 import matplotlib.pylab as plt
 import random
 

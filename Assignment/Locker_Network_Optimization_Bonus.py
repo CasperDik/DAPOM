@@ -60,12 +60,6 @@ def optimizing_locker_network_bonus(districts: list, P: float, capacities: list,
         obj = quicksum(y[j, k] * costs[k] for j in range(n) for k in capacities)
         m.setObjective(obj, GRB.MINIMIZE)
 
-        # todo: remove
-        #m.Params.MIPFocus = 1
-        # m.Params.Cuts = 3
-        # m.Params.MIPGap = 0.05  # 5%
-        # m.Params.TimeLimit = 300  # 5 minutes
-
         # optimize the defined objective function with the constraint
         m.optimize()
         # m.write("model.lp")

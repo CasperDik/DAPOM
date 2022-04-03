@@ -14,11 +14,6 @@ def load_data(password_elasticsearch):
     # connect to elasticsearch
     es = Elasticsearch(hosts="http://elastic:" + password_elasticsearch + "@localhost:9200")
 
-    # todo: delete
-    es.indices.delete(index='assignment_geo_coords', ignore=[400, 404])
-    es.indices.delete(index='assignment_distances', ignore=[400, 404])
-    es.indices.delete(index='assignment_forecasts23', ignore=[400, 404])
-
     # for the geo_coordinates and forecast data some data preparation must be done before uploading to elasticsearch
     data_preparations()
 
@@ -42,7 +37,6 @@ def load_data(password_elasticsearch):
     upload_to_ES(es, filename="input_data/forecasts_2023_cleaned.csv", index_name="assignment_forecasts23",
                  buffer_size=15000, mapping=mapping_forecast)
 
-    # todo: try this upload with mapping once
     # set mapping and upload distances to elasticsearch
     mapping_distances = {"properties":
                              {"start_point_travel": {"type": "string"},
@@ -79,8 +73,8 @@ def data_preparations():
     # replace the months to index of months
     months = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8,
               "September": 9, "October": 10, "November": 11, "December": 12}
-    # todo: to numeric needed here?
-    forecast_data["month"] = pd.to_numeric(forecast_data["month"].replace(months))
+
+    forecast_data["month"] = forecast_data["month"].replace(months)
 
     # remove the 29th of February 2023 from data as it does not exist
     forecast_data = forecast_data[(forecast_data["day"] != 29) & (forecast_data["month"] != 2)]

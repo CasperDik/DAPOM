@@ -153,6 +153,9 @@ def optimizing_locker_network(districts: list, P: float, C: float, W: dict, Dema
         # store the results in a dictionary under the key district
         results[district] = [x, y]
 
+    total_count_lockers = sum([len(results[i][1]) for i in results.keys()])
+    print("Total number of lockers is: ", total_count_lockers)
+
     # if function is called for sensitivity analysis, store the output with a different name and at a different location
     if sensitivity_analysis == True:
         pickle.dump(results, open("pickles/sensitivity_analysis/results_" + districts[0] + "_max_percentage_" + str(max_percentage) + ".p", "wb"))
